@@ -15,6 +15,7 @@
 
 #selectedTimeDisplay {
     grid-column-start: span 6;
+    order: -2;
 }
 
 #monthYearDisplay {
@@ -23,6 +24,7 @@
 
 #amButton, #pmButton {
     grid-column-start: span 3;
+    order: 1;
 }
 
 #timeGrid, #calGrid {
@@ -53,7 +55,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: blue;
 }
 
 .calColHeader {

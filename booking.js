@@ -48,11 +48,12 @@
         return n + ':' + addZero(m);
     }
 
-    function timeToNum(t) {
+    function timeToNum(t, amPm) {
         t = t.split(':');
         return {
             hours: parseInt(t[0]),
-            minutes: parseInt(t[1])
+            minutes: parseInt(t[1]),
+            amPm: amPm
         };
     }
 
@@ -165,12 +166,7 @@
         this.init = function() {
             this.options = o;
             this.elem = $(this.options.id);
-            //this.addLabel('Please select a date below for your booking.');
             this.initDateLanePicker();
-            //this.addLabel('How many lanes would you like to book?');
-            //this.initLanePicker();
-            //this.addLabel('What time would you like your booking to start?');
-            //this.initTimePicker();
         }
 
         this.initTimePicker = function() {
@@ -254,7 +250,6 @@
         }
 
         this.initTimePicker = function(container) {
-            console.log('initializing time picker');
             this.timeInfo = getTimes();
 
             let timeGrid = createElem('div', '#timeGrid');
@@ -266,15 +261,14 @@
 
             selectedTimeDisplay.textContent = "Your Selected Time is: ";
             amButton.textContent = 'AM';
-            amButton.addEventListener('click', this.showAm);
+            pmButton.addEventListener('click', this.onAmPmClick);
             pmButton.textContent = 'PM';
-            pmButton.addEventListener('click', this.showPm);
             timeGrid.append(selectedTimeDisplay);
             
             let amMax = Math.min(this.timeInfo.businessHours.closingTime, 10);
             for (let i = 0; i < 12; i++) {
                 let timeTile = createElem('div', '.timeTile');
-                timeTile.testContent = '';
+                timeTile.textContent = '';
                 timeGrid.append(timeTile);
             }
             timeGrid.append(amButton, pmButton);
@@ -284,36 +278,52 @@
             this.pmButton = pmButton;
             container.append(timeGrid);
             //TODO: select default date, also change how this is done in calendar?
-            this.showAm();
+            this.curAmPm = 'am';
+            this.showTimes('am');
         }
 
-        // Again, 'this' refers to the clicked on div here.
-        this.showAm = function() {
-            let start = booker.timeInfo.businessHours.openingTime;
-            let end = Math.min(booker.timeInfo.businessHours.closingTime - 1, 10);
-            booker.showTimes(start, end); 
+        this.onAmPmClick = function() {
+            this.removeEventListener('click', booker.onAmPmClick);
+            if (this == booker.amButton) {
+                booker.curAmPm = 'am';
+                booker.pmButton.addEventListener('click', booker.onAmPmClick);
+                booker.showTimes('am');
+            } else {
+                booker.curAmPm = 'pm';
+                booker.amButton.addEventListener('click', booker.onAmPmClick);
+                booker.showTimes('pm');
+            }
         }
 
-        //TODO: write on onclick and hand it between showpm and show am.
-        this.showPm = function() {
-            let start = Math.max(booker.timeInfo.businessHours.openingTime, 11);
-            let end = Math.min(booker.timeInfo.businessHours.closingTime - 1, 22)
-            //TODO: make time info global and think about async ness
-            booker.showTimes(start, end);
-        }
 
-        this.showTimes = function(start, end) {
+        this.showTimes = function(type) {
+            // first put actual times into the grid, then put empty tiles
+            let offset = 0;
+            // set first and last hour for am times
+            let start = 1, end = 0;
+            if (type === 'am') {
+                start = this.timeInfo.businessHours.openingTime;
+                end = Math.min(this.timeInfo.businessHours.closingTime - 1, 10);
+            } else if (type === 'pm') {
+                offset = 11;
+                start = Math.max(this.timeInfo.businessHours.openingTime, 11);
+                end = Math.min(this.timeInfo.businessHours.closingTime - 1, 22);
+            } else {
+                console.log("ERROR: received invalid type in showTimes");
+            }
             //TODO: timeTile and calTile are prob unnecessary
             let tiles = this.timeGrid.querySelectorAll('.timeTile');
             for (let i = 0; i < tiles.length; i++) {
-                if (i + 11 >= start && i <= end) {
+                if (i + offset >= start && i + offset <= end) {
                     if (tiles[i].textContent == '') {
                         tiles[i].addEventListener('click', this.onTimeTileClick);
+                        tiles[i].style.order = -1;
                     }
-                    tiles[i].textContent = numToTime(i, 0);
+                    tiles[i].textContent = numToTime(i + offset, 0);
                 } else {
                     if (tiles[i].textContent != '') {
                         tiles[i].removeEventListener('click', this.onTimeTileClick);
+                        tiles[i].style.order = 1;
                     }
                     tiles[i].textContent = '';
                 }
@@ -323,12 +333,14 @@
 
         // Again, 'this' refers to the clicked on div here.
         this.onTimeTileClick = function() {
-            booker.selectTime(timeToNum(this.textContent));
+            booker.selectTime(timeToNum(this.textContent, booker.curAmPm));
         }
 
         this.selectTime = function(t) {
+            this.selectedTime = t;
             console.log('user selected Time: ');
             console.log(t);
+            console.log(booker);
         }
 
         // Again, 'this' refers to the clicked on div here.
