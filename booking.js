@@ -57,6 +57,13 @@
         };
     }
 
+    function addLabel(str, container) {
+        let label = document.createElement('h2');
+        label.textContent = str;
+        container.appendChild(label);
+    }
+
+
     function Calendar(o) {
         this.init = function() {
             this.options = o;
@@ -174,12 +181,6 @@
             
         }
 
-        this.addLabel = function(str, container) {
-            let label = document.createElement('h2');
-            label.textContent = str;
-            container.appendChild(label);
-        }
-
         this.initLanePicker = function(container) {
             let lanePickerContainer = createElem('div', '#laneNumPickerContainer');
             let prevLaneButton = createElem('div', '#prevLaneButton');
@@ -226,12 +227,12 @@
             let dateLanePicker = document.createElement('div');
             dateLanePicker.id = 'dateLanePicker';
             // Add date picker label
-            this.addLabel('Please select a date below for your booking', dateLanePicker);
+            addLabel('Please select a date below for your booking', dateLanePicker);
             this.cal = new Calendar({
                 pickerElem: dateLanePicker,
                 todaysDate: new Date()
             });
-            this.addLabel('How many lanes would you like to book?', dateLanePicker);
+            addLabel('How many lanes would you like to book?', dateLanePicker);
             this.initLanePicker(dateLanePicker);
             this.initNextBookerButton(dateLanePicker);
                         
@@ -242,7 +243,7 @@
         this.showTimePicker = function() {
             this.dateLanePicker.style.display = 'none';
             let timePickerContainer = createElem('div', '#timePickerContainer');
-            this.addLabel('What time would you like your booking to start?', timePickerContainer);
+            addLabel('What time would you like your booking to start?', timePickerContainer);
             this.initTimePicker(timePickerContainer);
             this.initSubmitBookerButton(timePickerContainer);
             this.timePicker = timePickerContainer;
