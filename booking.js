@@ -6,13 +6,157 @@
     //TODO: remove this
     // This funcitons simulates the GetTimes api call that should be made after the user hits the next button on the date time picker.
     // Once that API is actually written, it should replace this function, but till then, it's a "fake" api call
-    function getTimes() {
+    function getBusinessInfo() {
         return {
-            businessHours: {
-                openingTime: 8,
-                closingTime: 22
-            },
-            blockedHours: []
+            openingTime: 0,
+            closingTime: 23,
+            availableHours: [
+                {
+                    hours: 8,
+                    minutes: 0,
+                    isPm: false
+                },
+                {
+                    hours: 9,
+                    minutes: 0,
+                    isPm: false
+                },
+                {
+                    hours: 10,
+                    minutes: 0,
+                    isPm: false
+                },
+                {
+                    hours: 11,
+                    minutes: 0,
+                    isPm: false
+                },
+                {
+                    hours: 12,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 1,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 2,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 3,
+                    minutes: 30,
+                    isPm: true 
+                },
+                {
+                    hours: 4,
+                    minutes: 30,
+                    isPm: true 
+                },
+                {
+                    hours: 5,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 6,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 7,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 8,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 1,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 2,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 3,
+                    minutes: 30,
+                    isPm: true 
+                },
+                {
+                    hours: 4,
+                    minutes: 30,
+                    isPm: true 
+                },
+                {
+                    hours: 5,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 6,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 7,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 8,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 1,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 2,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 3,
+                    minutes: 30,
+                    isPm: true 
+                },
+                {
+                    hours: 4,
+                    minutes: 30,
+                    isPm: true 
+                },
+                {
+                    hours: 5,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 6,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 7,
+                    minutes: 30,
+                    isPm: true
+                },
+                {
+                    hours: 8,
+                    minutes: 30,
+                    isPm: true
+                }
+            ]
         };
     }
 
@@ -43,17 +187,22 @@
     }
 
     // Takes a int hours and int minutes and converts to string representation of time HH:MM
+    // Time will be displayed in 12 hour format.
     function numToTime(h, m) {
         let n = h % 12;
+        if (n === 0) {
+            n = 12;
+        }
         return n + ':' + addZero(m);
     }
 
-    function timeToNum(t, amPm) {
+    // takes a time string in HH:MM format and a boolean isPm, returns object.
+    function timeToNum(t, isPm) {
         t = t.split(':');
         return {
             hours: parseInt(t[0]),
             minutes: parseInt(t[1]),
-            amPm: amPm
+            isPm: isPm
         };
     }
 
@@ -145,11 +294,13 @@
                 if (i >= dayOffset && i - dayOffset < daysInMonth) {
                     if (tiles[i].textContent === '') {
                         tiles[i].addEventListener('click', this.onCalTileClick);
+                        tiles[i].classList.add('clickableTile');
                     }
                     tiles[i].textContent = i - dayOffset + 1;
                 } else {
                     if (tiles[i].textContent !== '') {
                         tiles[i].removeEventListener('click', this.onCalTileClick);
+                        tiles[i].classList.remove('clickableTile');
                     }
                     tiles[i].textContent = '';
                 }
@@ -241,6 +392,7 @@
         }
 
         this.showTimePicker = function() {
+            this.businessInfo = getBusinessInfo();
             this.dateLanePicker.style.display = 'none';
             let timePickerContainer = createElem('div', '#timePickerContainer');
             addLabel('What time would you like your booking to start?', timePickerContainer);
@@ -251,82 +403,78 @@
         }
 
         this.initTimePicker = function(container) {
-            this.timeInfo = getTimes();
-
             let timeGrid = createElem('div', '#timeGrid');
             let selectedTimeDisplay = createElem('div', '#selectedTimeDisplay');
             let amButton = createElem('div', '#amButton');
             amButton.setAttribute('class', 'timeButton');
             let pmButton = createElem('div', '#pmButton');
             pmButton.setAttribute('class', 'timeButton');
+            let innerTimeGridContainer = createElem('div', '#innerTimeGridContainer');
+            let innerTimeGrid = createElem('div', '#innerTimeGrid');
 
             selectedTimeDisplay.textContent = "Your Selected Time is: ";
             amButton.textContent = 'AM';
-            pmButton.addEventListener('click', this.onAmPmClick);
+            amButton.addEventListener('click', this.onAmPmClick);
             pmButton.textContent = 'PM';
             timeGrid.append(selectedTimeDisplay);
-            
-            let amMax = Math.min(this.timeInfo.businessHours.closingTime, 10);
+            /*
             for (let i = 0; i < 12; i++) {
                 let timeTile = createElem('div', '.timeTile');
                 timeTile.textContent = '';
-                timeGrid.append(timeTile);
-            }
+                innerTimeGrid.append(timeTile);
+            }*/
+            innerTimeGridContainer.append(innerTimeGrid);
+            timeGrid.append(innerTimeGridContainer);
             timeGrid.append(amButton, pmButton);
-            this.timeGrid = timeGrid;
+            this.timeGrid = innerTimeGrid;
             this.selectedTimeDisplay = selectedTimeDisplay;
             this.amButton = amButton;
             this.pmButton = pmButton;
             container.append(timeGrid);
             //TODO: select default date, also change how this is done in calendar?
-            this.curAmPm = 'am';
-            this.showTimes('am');
+            this.isPm = true;
+            this.showTimes();
         }
 
         this.onAmPmClick = function() {
             this.removeEventListener('click', booker.onAmPmClick);
             if (this == booker.amButton) {
-                booker.curAmPm = 'am';
+                booker.isPm = false;
                 booker.pmButton.addEventListener('click', booker.onAmPmClick);
-                booker.showTimes('am');
+                booker.showTimes();
             } else {
-                booker.curAmPm = 'pm';
+                booker.isPm = true;
                 booker.amButton.addEventListener('click', booker.onAmPmClick);
-                booker.showTimes('pm');
+                booker.showTimes();
             }
         }
 
-
-        this.showTimes = function(type) {
-            // first put actual times into the grid, then put empty tiles
-            let offset = 0;
-            // set first and last hour for am times
-            let start = 1, end = 0;
-            if (type === 'am') {
-                start = this.timeInfo.businessHours.openingTime;
-                end = Math.min(this.timeInfo.businessHours.closingTime - 1, 10);
-            } else if (type === 'pm') {
-                offset = 11;
-                start = Math.max(this.timeInfo.businessHours.openingTime, 11);
-                end = Math.min(this.timeInfo.businessHours.closingTime - 1, 22);
-            } else {
-                console.log("ERROR: received invalid type in showTimes");
-            }
-            //TODO: timeTile and calTile are prob unnecessary
+        // Requires booker.isPm to be set before this is called.
+        this.showTimes = function() {
             let tiles = this.timeGrid.querySelectorAll('.timeTile');
-            for (let i = 0; i < tiles.length; i++) {
-                if (i + offset >= start && i + offset <= end) {
-                    if (tiles[i].textContent == '') {
-                        tiles[i].addEventListener('click', this.onTimeTileClick);
-                        tiles[i].style.order = -1;
-                    }
-                    tiles[i].textContent = numToTime(i + offset, 0);
+            let hrs = this.businessInfo.availableHours;
+            for (let i = 0; i < hrs.length; i++) {
+                let tile;
+                if (i >= tiles.length) {
+                    // need to make a new tile
+                    tile = createElem('div', '.timeTile');
+                    tile.textContent = '';
+                    this.timeGrid.append(tile);
                 } else {
-                    if (tiles[i].textContent != '') {
-                        tiles[i].removeEventListener('click', this.onTimeTileClick);
-                        tiles[i].style.order = 1;
+                    tile = tiles[i];
+                }
+                if (hrs[i].isPm === this.isPm) {
+                    if (tile.textContent == '') {
+                        tile.addEventListener('click', this.onTimeTileClick);
+                        tile.classList.add('clickableTile');
                     }
-                    tiles[i].textContent = '';
+                    tile.textContent = numToTime(hrs[i].hours, hrs[i].minutes);
+                } else {
+                    if (tile.textContent != '') {
+                        tile.removeEventListener('click', this.onTimeTileClick);
+                        tile.classList.remove('clickableTile');
+                    }
+                    tile.textContent = '';
                 }
             }
         }
@@ -334,7 +482,7 @@
 
         // Again, 'this' refers to the clicked on div here.
         this.onTimeTileClick = function() {
-            booker.selectTime(timeToNum(this.textContent, booker.curAmPm));
+            booker.selectTime(timeToNum(this.textContent, booker.isPm));
         }
 
         this.selectTime = function(t) {

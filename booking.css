@@ -14,8 +14,7 @@
 }
 
 #selectedTimeDisplay {
-    grid-column-start: span 6;
-    order: -2;
+    grid-column-start: span 2;
 }
 
 #monthYearDisplay {
@@ -23,8 +22,7 @@
 }
 
 #amButton, #pmButton {
-    grid-column-start: span 3;
-    order: 1;
+    background-color: blue;
 }
 
 #timeGrid, #calGrid {
@@ -40,16 +38,39 @@
 }
 
 #timeGrid {
-    grid-template-columns: repeat(6, 60px);
-    grid-template-rows: repeat(4, 100px);
+    grid-template-columns: 180px 180px;
+    grid-template-rows: 50px 250px 50px;
 }
 
-#calGrid, #laneNumPickerContainer, #timeGrid {
+#innerTimeGridContainer {
+    grid-column-start: span 2;
+    overflow: scroll;
+}
+
+#innerTimeGrid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 100px);
+    grid-auto-rows: 50px;
+    max-height: 250px;
+}
+
+#calGrid, #laneNumPickerContainer, #timeGrid, #nextBookerButton, #submitBookerButton {
     margin: auto;
     background-color: #f6f6f6;
     width: fit-content;
     box-shadow: 2px 3px rgba(0, 0, 0, 0.3);
-}    
+} 
+
+#nextBookerButton, #submitBookerButton {
+    width: 200px;
+    height: 50px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
 
 #calGrid > div, #laneNumPickerContainer > div, #timeGrid > div {
     display: flex;
@@ -57,13 +78,21 @@
     align-items: center;
 }
 
-.calColHeader {
-    
-}
-
 #laneNumPickerContainer {
     display: flex;
     justify-content: center;
+}
+
+.clickableTile {
+    border: 1px solid black;
+}
+
+.timeTile.clickableTile {
+    order: -1;
+}
+
+.timeTile {
+    grid-column-start: span 3;
 }
 
 .laneButton {
