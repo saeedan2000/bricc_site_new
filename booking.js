@@ -1,6 +1,9 @@
 "use strict";
 // This file contains the logic for the booking page.
 (function() {
+    let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                'September', 'October', 'November', 'December'];
+
     let booker;
 
     //TODO: remove this
@@ -212,94 +215,122 @@
         container.appendChild(label);
     }
 
+    function appendTilesToCalendar(cal) {
+        // first add the column headers, then the regular tiles
+        ['Sat', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sun'].forEach(function(elem) { 
+            let calColHeader = document.createElement('div');
+            calColHeader.classList.add('calColHeader');
+            calColHeader.textContent = elem;
+            cal.append(calColHeader);
+        });
+        for (let i = 0; i < 35; i++) { // add regular calendar tiles
+            let calTile = createElem('div', '.calTile');
+            calTile.textContent = '';
+            cal.append(calTile);
+        }
+    }
+
+    function onPrevCalMonthClick() {
+        let cal = booker.cal;
+        let newData = {
+            year: cal.curYear,
+            month: cal.curMonth - 1
+        }
+        if (newData.month < 0) {
+            newData.year--;
+            newData.month = 11;
+        } 
+        cal.setDisplayedMonthYear(newData);
+        cal.render();
+    }
+
+    function onNextCalMonthClick() {
+        let cal = booker.cal;
+        let newData = {
+            year: cal.curYear,
+            month: cal.curMonth + 1
+        }
+        if (newData.month > 11) {
+            newData.year++;
+            newData.month = 0;
+        } 
+        cal.setDisplayedMonthYear(newData);
+        cal.render();
+    }
+
+    // This is the onclick function for a valid calendar day tile.
+    function onCalDayClick() {
+        booker.cal.setSelectedDate({
+            year: booker.cal.curYear, 
+            month: booker.cal.curMonth, 
+            date: parseInt(this.textContent)
+        });
+    }
 
     function Calendar(o) {
         this.init = function() {
             this.options = o;
 
-            let calGrid = createElem('div', '#calGrid');
+            // Create the display for the currently selected date.
             let selectedDateDisplay = createElem('div', '#selectedDateDisplay');
+            selectedDateDisplay.textContent = "Your Selected Date is: ";
+
+            // Create the button for going back a month
             let prevMonthButton = createElem('div', '#prevMonthButton');
             prevMonthButton.setAttribute('class', 'calButton');
+            prevMonthButton.textContent = 'Prev';
+            prevMonthButton.addEventListener('click', onPrevCalMonthClick);
+
+            // Create the button for going forward a month
             let nextMonthButton = createElem('div', '#nextMonthButton');
             nextMonthButton.setAttribute('class', 'calButton');
-            let monthYearDisplay = createElem('div', '#monthYearDisplay');
-            // set onclicks and whatnot of next/prev, maybe some logic for selected, set up grid
-            selectedDateDisplay.textContent = "Your Selected Date is: ";
-            prevMonthButton.textContent = 'Prev';
-            prevMonthButton.addEventListener('click', this.showPrevMonth);
             nextMonthButton.textContent = 'Next';
-            nextMonthButton.addEventListener('click', this.showNextMonth);
+            nextMonthButton.addEventListener('click', onNextCalMonthClick);
+
+            // Create the display for the current month and year shown on the calendar
+            let monthYearDisplay = createElem('div', '#monthYearDisplay');
+
+            // Create a css grid which contains everything for the calendar, day tiles, buttons, etc.
+            // We must append the various components to it in order, then append it to the picker element.
+            let calGrid = createElem('div', '#calGrid');
             calGrid.append(selectedDateDisplay);
-            ['Sat', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sun'].forEach(function(elem) {
-                let calColHeader = document.createElement('div');
-                calColHeader.classList.add('calColHeader');
-                calColHeader.textContent = elem;
-                calGrid.append(calColHeader);
-            });
-            for (let i = 0; i < 35; i++) {
-                let calTile = createElem('div', '.calTile');
-                calTile.textContent = '';
-                calGrid.append(calTile);
-            }
+            appendTilesToCalendar(calGrid)
             calGrid.append(prevMonthButton, monthYearDisplay, nextMonthButton);
-            this.calGrid = calGrid;
+            this.options.pickerElem.append(calGrid);
+
+            this.grid = calGrid; // if we use class maybe we don't have to type this so much so can not do this.
             this.selectedDateDisplay = selectedDateDisplay;
             this.monthYearDisplay = monthYearDisplay;
-            this.options.pickerElem.append(calGrid);
-            this.monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-                'September', 'October', 'November', 'December'];
+
+            // Set the state of the calendar.
             let todaysDate = this.options.todaysDate;
-            this.selectDate(todaysDate.getFullYear(), todaysDate.getMonth(), todaysDate.getDate());
-            this.curMonth = todaysDate.getMonth();
-            this.curYear = todaysDate.getFullYear();
-            this.renderMonth(todaysDate.getFullYear(), todaysDate.getMonth());
+            this.setSelectedDate({
+                year: todaysDate.getFullYear(),
+                month: todaysDate.getMonth(),
+                date: todaysDate.getDate()
+            });
+            this.setDisplayedMonthYear({
+                month: todaysDate.getMonth(),
+                year: todaysDate.getFullYear()
+            });
         }
 
-        // This function is the onclick for a valid calendar tile. It calls select date. When this function
-        // is called (when the user clicks on a tile), 'this' will refer to the tile being clicked on, not cal.
-        this.onCalTileClick = function() {
-            booker.cal.selectDate(booker.cal.curYear, booker.cal.curMonth, parseInt(this.textContent));
-        }
-
-        // Again, 'this' refers to the clicked on div here.
-        this.showPrevMonth = function() {
-            if (booker.cal.curMonth == 0) {
-                booker.cal.curYear--;
-                booker.cal.curMonth = 11;
-            } else {
-                booker.cal.curMonth--;
-            }
-            booker.cal.renderMonth(booker.cal.curYear, booker.cal.curMonth);
-        }
-
-        // Again, 'this' refers to the clicked on div here.
-        this.showNextMonth = function() {
-            if (booker.cal.curMonth == 11) {
-                booker.cal.curYear++;
-                booker.cal.curMonth = 0;
-            } else {
-                booker.cal.curMonth++;
-            }
-            booker.cal.renderMonth(booker.cal.curYear, booker.cal.curMonth);
-        }
-
-        // takes a month (0-11) and a year and renders the calendar
-        this.renderMonth = function(year, month) {
-            this.monthYearDisplay.textContent = this.monthNames[month] + ' ' + year;
-            let tiles = this.calGrid.querySelectorAll('.calTile');
-            let dayOffset = new Date(year, month).getDay();
-            let daysInMonth = 32 - (new Date(year, month, 32)).getDate();
+        // Clears any existing tiles and does a fresh render of the current month/year. 
+        // Does not touch selected Date.
+        this.render = function() {
+            let tiles = this.grid.querySelectorAll('.calTile');
+            let dayOffset = new Date(this.curYear, this.curMonth).getDay();
+            let daysInMonth = 32 - (new Date(this.curYear, this.curMonth, 32)).getDate();
             for (let i = 0; i < tiles.length; i++) {
                 if (i >= dayOffset && i - dayOffset < daysInMonth) {
                     if (tiles[i].textContent === '') {
-                        tiles[i].addEventListener('click', this.onCalTileClick);
+                        tiles[i].addEventListener('click', onCalDayClick);
                         tiles[i].classList.add('clickableTile');
                     }
                     tiles[i].textContent = i - dayOffset + 1;
                 } else {
                     if (tiles[i].textContent !== '') {
-                        tiles[i].removeEventListener('click', this.onCalTileClick);
+                        tiles[i].removeEventListener('click', onCalDayClick);
                         tiles[i].classList.remove('clickableTile');
                     }
                     tiles[i].textContent = '';
@@ -307,14 +338,19 @@
             }
         }
 
-        // Assumes int year, month, date
-        this.selectDate = function(year, month, date) {
-            this.selectedDate = {
-                year: year,
-                month: month,
-                day: date
-            }
-            this.selectedDateDisplay.textContent = 'Selected Date: ' + (month + 1) + '/' + date + '/' + year;
+        // Requires int year, month, date
+        this.setSelectedDate = function(data) {
+            this.selectedDate = data
+            console.log("calendar selected date is now: " + this.selectedDate);
+            this.selectedDateDisplay.textContent = 'Selected Date: ' + (data.month + 1) + '/' + data.date + '/' + data.year;
+        }
+
+        // Requires int params
+        this.setDisplayedMonthYear = function(data) {
+            this.curMonth = data.month;
+            this.curYear = data.year;
+            this.monthYearDisplay.textContent = monthNames[data.month] + ' ' + data.year;
+            this.render();
         }
 
         this.init();
@@ -375,8 +411,9 @@
         }
 
         this.initDateLanePicker = function() {
-            let dateLanePicker = document.createElement('div');
-            dateLanePicker.id = 'dateLanePicker';
+            // Create a div to hold both the calendar and lane picker.
+            let dateLanePicker = createElem('div', '#dateLanePicker');
+
             // Add date picker label
             addLabel('Please select a date below for your booking', dateLanePicker);
             this.cal = new Calendar({
@@ -500,7 +537,7 @@
             submitBookerButton.addEventListener('click', function() {
                 // TODO:
                 let sel = booker.cal.selectedDate;
-                console.log("User selected: " + booker.cal.monthNames[sel.month] + " " + sel.day + " " + sel.year);
+                console.log("User selected: " + monthNames[sel.month] + " " + sel.day + " " + sel.year);
             });
             container.appendChild(submitBookerButton);
         }            
