@@ -1,7 +1,17 @@
 "use strict";
 // This file contains the logic for the booking page.
 (function() {
-    const MAX_LANES = 5;
+    // H: 0-23, M: 1-60
+    const START_TIME = {
+        hour: 6,
+        minute: 30
+    }
+
+    const NUM_HOURS = 16;
+    
+    const MIN_TIME_INTERVAL = 30;   // minutes
+
+    const MAX_LANES_PER_BOOKING = 5;
 
     const DEFAULT_NUM_LANES = 1;
 
@@ -219,19 +229,21 @@
         container.appendChild(label);
     }
 
-    function appendTilesToCalendar(cal) {
+    function getCalendarTiles() {
+        let tiles = new Array();
         // first add the column headers, then the regular tiles
         ['Sat', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sun'].forEach(function(elem) { 
             let calColHeader = document.createElement('div');
             calColHeader.classList.add('calColHeader');
             calColHeader.textContent = elem;
-            cal.append(calColHeader);
+            tiles.push(calColHeader);
         });
         for (let i = 0; i < 35; i++) { // add regular calendar tiles
             let calTile = createElem('div', '.calTile');
             calTile.textContent = '';
-            cal.append(calTile);
+            tiles.push(calTile);
         }
+        return tiles;
     }
 
     // TODO should these just be anonymous
@@ -325,11 +337,10 @@
         // We must append the various components to it in order, then append it to the picker element.
         let calGrid = createElem('div', '#calGrid');
         calGrid.append(selectedDateDisplay);
-        appendTilesToCalendar(calGrid)
+        calGrid.append(...getCalendarTiles()) // using spread syntax to pass array as indiv. params.
         calGrid.append(prevMonthButton, monthYearDisplay, nextMonthButton);
 
         return calGrid;
-
     }
 
     function createLanePicker() {
@@ -342,7 +353,7 @@
         nextLaneButton.textContent = '>';
         nextLaneButton.addEventListener('click', function() {
             let curLane = booker.laneState.num;
-            if (curLane < MAX_LANES) {
+            if (curLane < MAX_LANES_PER_BOOKING) {
                 booker.laneState.num++;
                 $('laneNumDisplay').textContent = (curLane + 1).toString();
             }
@@ -385,6 +396,62 @@
         return submitDateLaneButton;
     }
 
+    function totalMinutes(time) {
+        return (time.hour * 60) + time.minute;
+    }
+
+    // Requires hour and minute to be ints.
+    function isBookableTime(time) {
+        let mins = totalMinutes(time);
+        let end = totalMinutes({
+            hour: START_TIME.hour + NUM_HOURS,
+            minute: START_TIME.minute
+        });
+        return totalMinutes(START_TIME) <= mins && mins < end;
+    }
+
+    // Adds the minimum interval to the given time.
+    function incrementTime(time) {
+        let mins = totalMinutes(time) + MIN_TIME_INTERVAL;
+        time.hour = mins / 60;
+        time.minute = mins % 60;
+    }
+
+    // Convert 0-index hours to 1 index, add colon and zeros, add am/pm
+    // Requires 0 <= hour <= 23 and 1 <= minute <= 60
+    function convertTimeToString(time) {
+        let arr = new Array();
+        let amPm = "am";
+        if (time.hour >= 12) {
+            amPm = "pm";
+            arr.push((time.hour - 11).toString());
+        } else {
+            arr.push((time.hour + 1).toString());
+        }
+        arr.push(':');
+        if (time.minute < 10) {
+            arr.push('0');
+        } 
+        arr.push(time.minute.toString(), ' ', amPm);
+        return arr.join();
+    }
+
+    function createTimePicker() {
+        let timePickerContainer = createElem('div', '#timePickerContainer');
+        let scroller = createElem('div', '#timePickerScroller');
+        
+        // Create a tile for every possible time.
+        for(let timeIndex = START_TIME; isBookableTime(timeIndex); incrementTime(timeIndex)) {
+            let tile = createElem('div', '.timeTile');
+            tile.textContent = convertTimeToString(timeIndex);
+            scroller.append(tile);
+        }
+
+        timePickerContainer.append(scroller);
+        return timePickerContainer;
+    }
+
+
     function Booker(o) {
         this.initDateLanePicker = function() {
             // Create a div to hold both the calendar and lane picker.
@@ -423,56 +490,17 @@
         this.init = function() {
             this.elem = o.elem;
             this.initDateLanePicker();
+            // TODO remove this.
+            this.initTimePicker();
         }
 
         this.initTimePicker = function() {
-            let timePickerContainer = createElem('div', '#timePickerContainer');
-            
-        }
+            let timePickerAndSubmitContainer = createElem('div', '#timePickerAndSubmitContainer');
+            this.elem.append(timePickerAndSubmitContainer);
 
-        this.showTimePicker = function() {
-            this.businessInfo = getBusinessInfo();
-            this.dateLanePicker.style.display = 'none';
-            let timePickerContainer = createElem('div', '#timePickerContainer');
-            addLabel('What time would you like your booking to start?', timePickerContainer);
-            this.initTimePicker(timePickerContainer);
-            this.initSubmitBookerButton(timePickerContainer);
-            this.timePicker = timePickerContainer;
-            this.elem.appendChild(timePickerContainer);
-        }
-
-        this.initTimePicker = function(container) {
-            let timeGrid = createElem('div', '#timeGrid');
-            let selectedTimeDisplay = createElem('div', '#selectedTimeDisplay');
-            let amButton = createElem('div', '#amButton');
-            amButton.setAttribute('class', 'timeButton');
-            let pmButton = createElem('div', '#pmButton');
-            pmButton.setAttribute('class', 'timeButton');
-            let innerTimeGridContainer = createElem('div', '#innerTimeGridContainer');
-            let innerTimeGrid = createElem('div', '#innerTimeGrid');
-
-            selectedTimeDisplay.textContent = "Your Selected Time is: ";
-            amButton.textContent = 'AM';
-            amButton.addEventListener('click', this.onAmPmClick);
-            pmButton.textContent = 'PM';
-            timeGrid.append(selectedTimeDisplay);
-            /*
-            for (let i = 0; i < 12; i++) {
-                let timeTile = createElem('div', '.timeTile');
-                timeTile.textContent = '';
-                innerTimeGrid.append(timeTile);
-            }*/
-            innerTimeGridContainer.append(innerTimeGrid);
-            timeGrid.append(innerTimeGridContainer);
-            timeGrid.append(amButton, pmButton);
-            this.timeGrid = innerTimeGrid;
-            this.selectedTimeDisplay = selectedTimeDisplay;
-            this.amButton = amButton;
-            this.pmButton = pmButton;
-            container.append(timeGrid);
-            //TODO: select default date, also change how this is done in calendar?
-            this.isPm = true;
-            this.showTimes();
+            // Add time picker label and the time picker itself.
+            addLabel('What time would you like your booking to start?', timePickerAndSubmitContainer);
+            timePickerAndSubmitContainer.append(createTimePicker());
         }
 
         this.onAmPmClick = function() {
