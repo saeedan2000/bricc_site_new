@@ -7,7 +7,7 @@
         minute: 30
     }
 
-    const NUM_HOURS = 16;
+    const NUM_HOURS = 15;
     
     const MIN_TIME_INTERVAL = 30;   // minutes
 
@@ -407,13 +407,14 @@
             hour: START_TIME.hour + NUM_HOURS,
             minute: START_TIME.minute
         });
+
         return totalMinutes(START_TIME) <= mins && mins < end;
     }
 
     // Adds the minimum interval to the given time.
     function incrementTime(time) {
         let mins = totalMinutes(time) + MIN_TIME_INTERVAL;
-        time.hour = mins / 60;
+        time.hour = Math.floor(mins / 60);
         time.minute = mins % 60;
     }
 
@@ -433,7 +434,7 @@
             arr.push('0');
         } 
         arr.push(time.minute.toString(), ' ', amPm);
-        return arr.join();
+        return arr.join("");
     }
 
     function createTimePicker() {
@@ -441,7 +442,8 @@
         let scroller = createElem('div', '#timePickerScroller');
         
         // Create a tile for every possible time.
-        for(let timeIndex = START_TIME; isBookableTime(timeIndex); incrementTime(timeIndex)) {
+        let timeIndex = {...START_TIME};
+        for(; isBookableTime(timeIndex); incrementTime(timeIndex)) {
             let tile = createElem('div', '.timeTile');
             tile.textContent = convertTimeToString(timeIndex);
             scroller.append(tile);
