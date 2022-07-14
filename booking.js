@@ -1,7 +1,11 @@
 "use strict";
 // This file contains the logic for the booking page.
 (function() {
-    let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+    const MAX_LANES = 5;
+
+    const DEFAULT_NUM_LANES = 1;
+
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                 'September', 'October', 'November', 'December'];
 
     let booker;
@@ -230,6 +234,7 @@
         }
     }
 
+    // TODO should these just be anonymous
     function onPrevCalMonthClick() {
         let cal = booker.calState;
         cal.curMonth--;
@@ -255,17 +260,28 @@
         let cal = booker.calState;
         cal.selectedYear = cal.curYear;
         cal.selectedMonth = cal.curMonth;
-        cal.selectedDate = parseInt(this.textContent); // TODO: should these just be strings??????
+        cal.selectedDate = parseInt(this.textContent); 
         updateCalSelectedDate();
     }
 
-    // Clears any existing tiles and does a fresh render of the calendar for the current month/year. 
-    // Does not touch selected Date.
-    function renderCalendar() {
-        updateCalSelectedDate();
-        updateCalMonthYear();
-        let tiles = document.querySelectorAll('.calTile');
+    function updateCalSelectedDate() {
         let cal = booker.calState;
+        $('selectedDateDisplay').textContent = 'Selected Date: ' + 
+            (cal.selectedMonth + 1) + '/' + 
+            cal.selectedDate + '/' 
+            + cal.selectedYear;
+    }
+
+    // Clears any existing tiles and does a fresh render of the calendar for the current month/year. 
+    // Does not change any calState fields, only renders the ui to match them.
+    function renderCalendar() {
+        let cal = booker.calState;
+        // update month/year and selected date.
+        $('monthYearDisplay').textContent = monthNames[cal.curMonth] + ' ' + cal.curYear;
+        updateCalSelectedDate();
+
+        // Now render the calendar for the current month/year
+        let tiles = document.querySelectorAll('.calTile');
         let dayOffset = new Date(cal.curYear, cal.curMonth).getDay();
         let daysInMonth = 32 - (new Date(cal.curYear, cal.curMonth, 32)).getDate();
         for (let i = 0; i < tiles.length; i++) {
@@ -316,25 +332,64 @@
 
     }
 
-    function updateCalSelectedDate() {
-        let cal = booker.calState;
-        $('selectedDateDisplay').textContent = 'Selected Date: ' + 
-            (cal.selectedMonth + 1) + '/' + 
-            cal.selectedDate + '/' 
-            + cal.selectedYear;
+    function createLanePicker() {
+        // Create display for currently selected number of lanes.
+        let laneNumDisplay = createElem('div', '#laneNumDisplay');
+
+        // Create button for increasing the number of lanes
+        let nextLaneButton = createElem('div', '#nextLaneButton');
+        nextLaneButton.classList.add('laneButton');
+        nextLaneButton.textContent = '>';
+        nextLaneButton.addEventListener('click', function() {
+            let curLane = booker.laneState.num;
+            if (curLane < MAX_LANES) {
+                booker.laneState.num++;
+                $('laneNumDisplay').textContent = (curLane + 1).toString();
+            }
+        });
+
+        // Create button for decreasing the number of lanes.
+        let prevLaneButton = createElem('div', '#prevLaneButton');
+        prevLaneButton.classList.add('laneButton');
+        prevLaneButton.textContent = '<';
+        prevLaneButton.addEventListener('click', function() {
+            let curLane = booker.laneState.num;
+            if (curLane > 1) {
+                booker.laneState.num--;
+                $('laneNumDisplay').textContent = (curLane - 1).toString();
+            }
+        });
+
+        // Create container to hold these elements
+        let lanePickerContainer = createElem('div', '#laneNumPickerContainer');
+        lanePickerContainer.append(prevLaneButton, laneNumDisplay, nextLaneButton);
+        return lanePickerContainer;
     }
 
-    function updateCalMonthYear() {
-        let cal = booker.calState;
-        $('monthYearDisplay').textContent = monthNames[cal.curMonth] + ' ' + cal.curYear;
+    function createSubmitDateLaneButton() {
+        let submitDateLaneButton = createElem('div', '#nextBookerButton');
+        submitDateLaneButton.classList.add('bookerButton');
+        submitDateLaneButton.textContent = 'Next';
+        submitDateLaneButton.addEventListener('click', function() {
+            let submittedDate = {
+                year: booker.calState.selectedYear,
+                month: booker.calState.selectedMonth,
+                date: booker.calState.selectedDate
+            }
+            let submitData = {
+                date: submittedDate,
+                lane: booker.laneState.num
+            }
+            console.log("Submitted Date/Lane: " + JSON.stringify(submitData));
+        });
+        return submitDateLaneButton;
     }
 
     function Booker(o) {
-
         this.initDateLanePicker = function() {
             // Create a div to hold both the calendar and lane picker.
             let dateLanePicker = createElem('div', '#dateLanePicker');
-            this.options.elem.appendChild(dateLanePicker);
+            this.elem.appendChild(dateLanePicker);
 
             // Add date picker label and calendar/datepicker
             addLabel('Please select a date below for your booking', dateLanePicker);
@@ -349,66 +404,30 @@
                 curMonth: todaysDate.getMonth(),
                 curYear: todaysDate.getFullYear()
             }
-            updateCalSelectedDate();
-            updateCalMonthYear();
             renderCalendar();
 
             // Add lane picker label, and lane picker
             addLabel('How many lanes would you like to book?', dateLanePicker);
-            //this.initLanePicker(dateLanePicker);
-            //this.initNextBookerButton(dateLanePicker);
+            dateLanePicker.append(createLanePicker());
+
+            // Set the state of the lane picker.
+            booker.laneState = {
+                num: DEFAULT_NUM_LANES
+            }
+            $('laneNumDisplay').textContent = DEFAULT_NUM_LANES.toString();
+
+            // Add the button to submit date and lane choices and move to the next stage of booking.
+            dateLanePicker.append(createSubmitDateLaneButton());
         }
 
         this.init = function() {
-            this.options = o;
+            this.elem = o.elem;
             this.initDateLanePicker();
         }
 
         this.initTimePicker = function() {
             let timePickerContainer = createElem('div', '#timePickerContainer');
             
-        }
-
-        this.initLanePicker = function(container) {
-            let lanePickerContainer = createElem('div', '#laneNumPickerContainer');
-            let prevLaneButton = createElem('div', '#prevLaneButton');
-            prevLaneButton.classList.add('laneButton');
-            prevLaneButton.textContent = '<';
-            let nextLaneButton = createElem('div', '#nextLaneButton');
-            nextLaneButton.classList.add('laneButton');
-            nextLaneButton.textContent = '>';
-            let laneNumDisplay = createElem('div', '#laneNumDisplay');
-            laneNumDisplay.textContent = '1';
-            this.selectedLaneNum = 1;
-            this.laneNumDisplay = laneNumDisplay;
-            prevLaneButton.addEventListener('click', function() {
-                let curLane = parseInt(booker.laneNumDisplay.textContent);
-                if (curLane != 1) {
-                    booker.laneNumDisplay.textContent = (curLane - 1).toString();
-                    booker.selectedLaneNum = curLane - 1;
-                }
-            });
-            nextLaneButton.addEventListener('click', function() {
-                let curLane = parseInt(booker.laneNumDisplay.textContent);
-                if (curLane != 5) {
-                    booker.laneNumDisplay.textContent = (curLane + 1).toString();
-                    booker.selectedLaneNum = curLane + 1;
-                }
-            });
-            lanePickerContainer.appendChild(prevLaneButton);
-            lanePickerContainer.appendChild(laneNumDisplay);
-            lanePickerContainer.appendChild(nextLaneButton);
-            container.appendChild(lanePickerContainer);
-        }
-
-        this.initNextBookerButton = function(container) {
-            let nextBookerButton = createElem('div', '#nextBookerButton');
-            nextBookerButton.classList.add('bookerButton');
-            nextBookerButton.textContent = 'Next';
-            nextBookerButton.addEventListener('click', function() {
-                booker.showTimePicker();
-            });
-            container.appendChild(nextBookerButton);
         }
 
         this.showTimePicker = function() {
@@ -419,7 +438,7 @@
             this.initTimePicker(timePickerContainer);
             this.initSubmitBookerButton(timePickerContainer);
             this.timePicker = timePickerContainer;
-            this.options.elem.appendChild(timePickerContainer);
+            this.elem.appendChild(timePickerContainer);
         }
 
         this.initTimePicker = function(container) {
