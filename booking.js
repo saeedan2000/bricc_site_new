@@ -505,62 +505,6 @@
             timePickerAndSubmitContainer.append(createTimePicker());
         }
 
-        this.onAmPmClick = function() {
-            this.removeEventListener('click', booker.onAmPmClick);
-            if (this == booker.amButton) {
-                booker.isPm = false;
-                booker.pmButton.addEventListener('click', booker.onAmPmClick);
-                booker.showTimes();
-            } else {
-                booker.isPm = true;
-                booker.amButton.addEventListener('click', booker.onAmPmClick);
-                booker.showTimes();
-            }
-        }
-
-        // Requires booker.isPm to be set before this is called.
-        this.showTimes = function() {
-            let tiles = this.timeGrid.querySelectorAll('.timeTile');
-            let hrs = this.businessInfo.availableHours;
-            for (let i = 0; i < hrs.length; i++) {
-                let tile;
-                if (i >= tiles.length) {
-                    // need to make a new tile
-                    tile = createElem('div', '.timeTile');
-                    tile.textContent = '';
-                    this.timeGrid.append(tile);
-                } else {
-                    tile = tiles[i];
-                }
-                if (hrs[i].isPm === this.isPm) {
-                    if (tile.textContent == '') {
-                        tile.addEventListener('click', this.onTimeTileClick);
-                        tile.classList.add('clickableTile');
-                    }
-                    tile.textContent = numToTime(hrs[i].hours, hrs[i].minutes);
-                } else {
-                    if (tile.textContent != '') {
-                        tile.removeEventListener('click', this.onTimeTileClick);
-                        tile.classList.remove('clickableTile');
-                    }
-                    tile.textContent = '';
-                }
-            }
-        }
-            
-
-        // Again, 'this' refers to the clicked on div here.
-        this.onTimeTileClick = function() {
-            booker.selectTime(timeToNum(this.textContent, booker.isPm));
-        }
-
-        this.selectTime = function(t) {
-            this.selectedTime = t;
-            console.log('user selected Time: ');
-            console.log(t);
-            console.log(booker);
-        }
-
         // Again, 'this' refers to the clicked on div here.
         this.initSubmitBookerButton = function(container) {
             let submitBookerButton = createElem('div', '#submitBookerButton');
