@@ -1,15 +1,7 @@
 "use strict";
 // This file contains the logic for the booking page.
+// TODO add selected tile
 (function() {
-    // H: 0-23, M: 1-60
-    const START_TIME = {
-        hour: 6,
-        minute: 30
-    }
-
-    const NUM_HOURS = 15;
-    
-    const MIN_TIME_INTERVAL = 30;   // minutes
 
     const MAX_LANES_PER_BOOKING = 5;
 
@@ -23,159 +15,63 @@
     //TODO: remove this
     // This funcitons simulates the GetTimes api call that should be made after the user hits the next button on the date time picker.
     // Once that API is actually written, it should replace this function, but till then, it's a "fake" api call
-    function getBusinessInfo() {
-        return {
-            openingTime: 0,
-            closingTime: 23,
-            availableHours: [
-                {
-                    hours: 8,
-                    minutes: 0,
-                    isPm: false
-                },
-                {
-                    hours: 9,
-                    minutes: 0,
-                    isPm: false
-                },
-                {
-                    hours: 10,
-                    minutes: 0,
-                    isPm: false
-                },
-                {
-                    hours: 11,
-                    minutes: 0,
-                    isPm: false
-                },
-                {
-                    hours: 12,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 1,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 2,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 3,
-                    minutes: 30,
-                    isPm: true 
-                },
-                {
-                    hours: 4,
-                    minutes: 30,
-                    isPm: true 
-                },
-                {
-                    hours: 5,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 6,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 7,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 8,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 1,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 2,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 3,
-                    minutes: 30,
-                    isPm: true 
-                },
-                {
-                    hours: 4,
-                    minutes: 30,
-                    isPm: true 
-                },
-                {
-                    hours: 5,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 6,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 7,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 8,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 1,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 2,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 3,
-                    minutes: 30,
-                    isPm: true 
-                },
-                {
-                    hours: 4,
-                    minutes: 30,
-                    isPm: true 
-                },
-                {
-                    hours: 5,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 6,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 7,
-                    minutes: 30,
-                    isPm: true
-                },
-                {
-                    hours: 8,
-                    minutes: 30,
-                    isPm: true
-                }
-            ]
-        };
-    }
+    const DUMMY_TIME_DATA = {
+        openingTime: {
+            hours: 5,
+            minutes: 30
+        },
+        closingTime: {
+            hours: 16,
+            minutes: 30
+        },
+        minTimeInterval: 30,
+        bookableTimes: [
+            {
+                hours: 8,
+                minutes: 0
+            },
+            {
+                hours: 9,
+                minutes: 0
+            },
+            {
+                hours: 9,
+                minutes: 30
+            },
+            {
+                hours: 10,
+                minutes: 0
+            },
+            {
+                hours: 12,
+                minutes: 30
+            },
+            {
+                hours: 13,
+                minutes: 30
+            },
+            {
+                hours: 14,
+                minutes: 0
+            },
+            {
+                hours: 14,
+                minutes: 30
+            },
+            {
+                hours: 15,
+                minutes: 0
+            },
+            {
+                hours: 15,
+                minutes: 30
+            },
+            {
+                hours: 16,
+                minutes: 0
+            }
+        ]
+    };
 
 
     // shorthand
@@ -343,6 +239,11 @@
         return calGrid;
     }
 
+    // Probably doesn't need it's own function, but in keeping with the pattern.
+    function renderLanePicker() {
+        $('laneNumDisplay').textContent = booker.laneState.num.toString();
+    }
+
     function createLanePicker() {
         // Create display for currently selected number of lanes.
         let laneNumDisplay = createElem('div', '#laneNumDisplay');
@@ -352,10 +253,9 @@
         nextLaneButton.classList.add('laneButton');
         nextLaneButton.textContent = '>';
         nextLaneButton.addEventListener('click', function() {
-            let curLane = booker.laneState.num;
-            if (curLane < MAX_LANES_PER_BOOKING) {
+            if (booker.laneState.num < MAX_LANES_PER_BOOKING) {
                 booker.laneState.num++;
-                $('laneNumDisplay').textContent = (curLane + 1).toString();
+                renderLanePicker()
             }
         });
 
@@ -364,10 +264,9 @@
         prevLaneButton.classList.add('laneButton');
         prevLaneButton.textContent = '<';
         prevLaneButton.addEventListener('click', function() {
-            let curLane = booker.laneState.num;
-            if (curLane > 1) {
+            if (booker.laneState.num > 1) {
                 booker.laneState.num--;
-                $('laneNumDisplay').textContent = (curLane - 1).toString();
+                renderLanePicker()
             }
         });
 
@@ -397,62 +296,95 @@
     }
 
     function totalMinutes(time) {
-        return (time.hour * 60) + time.minute;
+        return (time.hours * 60) + time.minutes;
     }
 
-    // Requires hour and minute to be ints.
-    function isBookableTime(time) {
+    // Requires hours and minutes to be ints.
+    function isValidTime(time) {
         let mins = totalMinutes(time);
-        let end = totalMinutes({
-            hour: START_TIME.hour + NUM_HOURS,
-            minute: START_TIME.minute
-        });
-
-        return totalMinutes(START_TIME) <= mins && mins < end;
+        let end = totalMinutes(booker.timeState.initData.closingTime);
+        let start = totalMinutes(booker.timeState.initData.openingTime);
+        return start <= mins && mins < end;
     }
 
     // Adds the minimum interval to the given time.
     function incrementTime(time) {
-        let mins = totalMinutes(time) + MIN_TIME_INTERVAL;
-        time.hour = Math.floor(mins / 60);
-        time.minute = mins % 60;
+        let mins = totalMinutes(time) + booker.timeState.initData.minTimeInterval;
+        time.hours = Math.floor(mins / 60);
+        time.minutes = mins % 60;
     }
-
+    
     // Convert 0-index hours to 1 index, add colon and zeros, add am/pm
-    // Requires 0 <= hour <= 23 and 1 <= minute <= 60
+    // Requires 0 <= hours <= 23 and 1 <= minutes <= 60
     function convertTimeToString(time) {
         let arr = new Array();
         let amPm = "am";
-        if (time.hour >= 12) {
+        if (time.hours >= 12) {
             amPm = "pm";
-            arr.push((time.hour - 11).toString());
+            arr.push((time.hours - 11).toString());
         } else {
-            arr.push((time.hour + 1).toString());
+            arr.push((time.hours + 1).toString());
         }
         arr.push(':');
-        if (time.minute < 10) {
+        if (time.minutes < 10) {
             arr.push('0');
         } 
-        arr.push(time.minute.toString(), ' ', amPm);
+        arr.push(time.minutes.toString(), ' ', amPm);
         return arr.join("");
     }
 
+    function areEqual(t1, t2) {
+        return (t1.hours == t2.hours) && (t1.minutes == t2.minutes);
+    }
+
+    // On click handler for time tile
+    function onTimeSelected() {
+        booker.timeState.selectedTime = JSON.parse(this.getAttribute('time'));
+        console.log(booker.timeState.selectedTime);
+    }
+
+    function renderTimePicker() {
+        // Remove any old tiles
+        let scroller = $('timePickerScroller');
+        scroller.textContent = '';
+
+        // Create a tile for every possible time.
+        // Then, based on the initData set it as clickable or not
+        let curBookableIndex = 0;
+        let timeIndex = {...booker.timeState.initData.openingTime};
+        for(; isValidTime(timeIndex); incrementTime(timeIndex)) {
+            let tile = createElem('div', '.timeTile');
+            
+            // if the time is a bookable time, then make it clickable
+            // TODO: if bookable times don't match our indexes we are in trouble
+            if (areEqual(
+                timeIndex, 
+                booker.timeState.initData.bookableTimes[curBookableIndex]
+            )) {
+                curBookableIndex++;
+                tile.addEventListener('click', onTimeSelected);
+                tile.classList.add('clickableTile');
+                tile.setAttribute('time', JSON.stringify(timeIndex));
+            }
+
+            tile.textContent = convertTimeToString(timeIndex);
+            scroller.append(tile);
+        }
+    }
+
+    // since the number of tiles varies based on the api response, we add tiles in renderTimePicker()
     function createTimePicker() {
         let timePickerContainer = createElem('div', '#timePickerContainer');
         let scroller = createElem('div', '#timePickerScroller');
         
-        // Create a tile for every possible time.
-        let timeIndex = {...START_TIME};
-        for(; isBookableTime(timeIndex); incrementTime(timeIndex)) {
-            let tile = createElem('div', '.timeTile');
-            tile.textContent = convertTimeToString(timeIndex);
-            scroller.append(tile);
-        }
-
         timePickerContainer.append(scroller);
         return timePickerContainer;
     }
 
+    function fakeTimesApiCall() {
+        let response = DUMMY_TIME_DATA;
+        booker.initTimePicker(response);
+    }
 
     function Booker(o) {
         this.initDateLanePicker = function() {
@@ -493,16 +425,23 @@
             this.elem = o.elem;
             this.initDateLanePicker();
             // TODO remove this.
-            this.initTimePicker();
+            fakeTimesApiCall();
         }
 
-        this.initTimePicker = function() {
+        this.initTimePicker = function(data) {
             let timePickerAndSubmitContainer = createElem('div', '#timePickerAndSubmitContainer');
             this.elem.append(timePickerAndSubmitContainer);
 
             // Add time picker label and the time picker itself.
             addLabel('What time would you like your booking to start?', timePickerAndSubmitContainer);
             timePickerAndSubmitContainer.append(createTimePicker());
+
+            // set state
+            booker.timeState = {
+                initData: data,
+                selectedTime: {...data.bookableTimes.first} //TODO do we want this default??
+            };
+            renderTimePicker();
         }
 
         // Again, 'this' refers to the clicked on div here.
