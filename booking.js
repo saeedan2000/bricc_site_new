@@ -1,8 +1,8 @@
 "use strict";
 // This file contains the logic for the booking page.
-// TODO add selected tile
 (function() {
 
+    // as of now not planning to get this from backend, not something likely to change.
     const MAX_LANES_PER_BOOKING = 5;
 
     const DEFAULT_NUM_LANES = 1;
@@ -12,9 +12,11 @@
 
     let booker;
 
-    //TODO: remove this
-    // This funcitons simulates the GetTimes api call that should be made after the user hits the next button on the date time picker.
-    // Once that API is actually written, it should replace this function, but till then, it's a "fake" api call
+    // These don't really belong in the state object since I don't want UI elems in the state.
+    // Adding them there forces the render functions to mess with state which I don't want.
+    let selectedCalTile, selectedTimeTile = null;
+
+    // TODO 
     const DUMMY_TIME_DATA = {
         openingTime: {
             hours: 5,
@@ -91,34 +93,6 @@
         return elem;
     }
 
-    function addZero(num) {
-        let ret = num.toString();
-        if (ret.length < 2) {
-            return '0' + ret;
-        }
-        return ret;
-    }
-
-    // Takes a int hours and int minutes and converts to string representation of time HH:MM
-    // Time will be displayed in 12 hour format.
-    function numToTime(h, m) {
-        let n = h % 12;
-        if (n === 0) {
-            n = 12;
-        }
-        return n + ':' + addZero(m);
-    }
-
-    // takes a time string in HH:MM format and a boolean isPm, returns object.
-    function timeToNum(t, isPm) {
-        t = t.split(':');
-        return {
-            hours: parseInt(t[0]),
-            minutes: parseInt(t[1]),
-            isPm: isPm
-        };
-    }
-
     function addLabel(str, container) {
         let label = document.createElement('h2');
         label.textContent = str;
@@ -165,14 +139,24 @@
 
     // This is the onclick function for a valid calendar day tile.
     function onCalDayClick() {
+        // update calendar state
         let cal = booker.calState;
         cal.selectedYear = cal.curYear;
         cal.selectedMonth = cal.curMonth;
         cal.selectedDate = parseInt(this.textContent); 
-        updateCalSelectedDate();
+        if (selectedCalTile != null) {
+            selectedCalTile.classList.remove('selectedTile'); // null if on nonselected month/year
+        }
+        selectedCalTile = this;
+
+        // give this tile selected styling
+        this.classList.add('selectedTile');
+
+        // update the selectedDate display
+        updateCalSelectedDateDisplay();
     }
 
-    function updateCalSelectedDate() {
+    function updateCalSelectedDateDisplay() {
         let cal = booker.calState;
         $('selectedDateDisplay').textContent = 'Selected Date: ' + 
             (cal.selectedMonth + 1) + '/' + 
@@ -186,7 +170,13 @@
         let cal = booker.calState;
         // update month/year and selected date.
         $('monthYearDisplay').textContent = monthNames[cal.curMonth] + ' ' + cal.curYear;
-        updateCalSelectedDate();
+        updateCalSelectedDateDisplay();
+
+        // clear the old selected tile.
+        if (selectedCalTile != null) {
+            selectedCalTile.classList.remove('selectedTile');
+        }
+        selectedCalTile = null;
 
         // Now render the calendar for the current month/year
         let tiles = document.querySelectorAll('.calTile');
@@ -194,11 +184,22 @@
         let daysInMonth = 32 - (new Date(cal.curYear, cal.curMonth, 32)).getDate();
         for (let i = 0; i < tiles.length; i++) {
             if (i >= dayOffset && i - dayOffset < daysInMonth) {
+                // if it already has text we don't need to do this.
                 if (tiles[i].textContent === '') {
                     tiles[i].addEventListener('click', onCalDayClick);
                     tiles[i].classList.add('clickableTile');
                 }
                 tiles[i].textContent = i - dayOffset + 1;
+
+                // if the tile is the selected tile, make it appear so.
+                if (cal.curYear == cal.selectedYear && 
+                        cal.curMonth == cal.selectedMonth && 
+                        cal.selectedDate == i - dayOffset + 1) {
+
+                    tiles[i].classList.add('selectedTile');
+                    // old selected tile should be null, we cleared it earlier in this func.
+                    selectedCalTile = tiles[i];
+                }
             } else {
                 if (tiles[i].textContent !== '') {
                     tiles[i].removeEventListener('click', onCalDayClick);
@@ -339,11 +340,18 @@
 
     // On click handler for time tile
     function onTimeSelected() {
-        booker.timeState.selectedTime = JSON.parse(this.getAttribute('time'));
+        let tState = booker.timeState;
+        tState.selectedTime = JSON.parse(this.getAttribute('time'));
+        if (selectedTimeTile != null) {
+            selectedTimeTile.classList.remove('selectedTile');
+        }
+        selectedTimeTile = this;
+        this.classList.add('selectedTile');
         console.log(booker.timeState.selectedTime);
     }
 
     function renderTimePicker() {
+        let tState = booker.timeState;
         // Remove any old tiles
         let scroller = $('timePickerScroller');
         scroller.textContent = '';
@@ -351,7 +359,7 @@
         // Create a tile for every possible time.
         // Then, based on the initData set it as clickable or not
         let curBookableIndex = 0;
-        let timeIndex = {...booker.timeState.initData.openingTime};
+        let timeIndex = {...tState.initData.openingTime};
         for(; isValidTime(timeIndex); incrementTime(timeIndex)) {
             let tile = createElem('div', '.timeTile');
             
@@ -359,12 +367,18 @@
             // TODO: if bookable times don't match our indexes we are in trouble
             if (areEqual(
                 timeIndex, 
-                booker.timeState.initData.bookableTimes[curBookableIndex]
+                tState.initData.bookableTimes[curBookableIndex]
             )) {
                 curBookableIndex++;
                 tile.addEventListener('click', onTimeSelected);
                 tile.classList.add('clickableTile');
                 tile.setAttribute('time', JSON.stringify(timeIndex));
+
+                // If we don't have a selectedTile, this is the first (default).
+                if (selectedTimeTile == null) {
+                    selectedTimeTile = tile;
+                    tile.classList.add('selectedTile');
+                }
             }
 
             tile.textContent = convertTimeToString(timeIndex);
