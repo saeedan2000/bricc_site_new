@@ -32,6 +32,8 @@
             minutes: 30
         },
         minTimeInterval: 30,
+        defaultBookingLength: 1,
+        maxBookingLength: 5,
         bookableTimes: [
             {
                 hours: 8,
@@ -255,8 +257,8 @@
         let laneNumDisplay = createElem('div', '#laneNumDisplay');
 
         // Create button for increasing the number of lanes
-        let nextLaneButton = createElem('div', '#nextLaneButton');
-        nextLaneButton.classList.add('laneButton');
+        let nextLaneButton = document.createElement('div');
+        nextLaneButton.classList.add('incDecButton');
         nextLaneButton.textContent = '>';
         nextLaneButton.addEventListener('click', function() {
             if (booker.laneState.num < MAX_LANES_PER_BOOKING) {
@@ -266,8 +268,8 @@
         });
 
         // Create button for decreasing the number of lanes.
-        let prevLaneButton = createElem('div', '#prevLaneButton');
-        prevLaneButton.classList.add('laneButton');
+        let prevLaneButton = document.createElement('div');
+        prevLaneButton.classList.add('incDecButton');
         prevLaneButton.textContent = '<';
         prevLaneButton.addEventListener('click', function() {
             if (booker.laneState.num > 1) {
@@ -409,11 +411,47 @@
         return timePickerContainer;
     }
 
+    // Probably doesn't need it's own function, but in keeping with the pattern.
+    function renderNumHoursPicker() {
+        $('numHoursDisplay').textContent = booker.timeState.numHours.toString();
+    }
+
+    // closely matches lanepicker
+    function createNumHoursPicker() {
+        let numHoursDisplay = createElem('div', '#numHoursDisplay');
+
+        let nextHourButton = document.createElement('div'); // maybe remove id for corresponding button for lane picker
+        nextHourButton.classList.add('incDecButton');
+        nextHourButton.textContent = '>';
+        nextHourButton.addEventListener('click', function() {
+            if (booker.timeState.numHours < booker.timeState.initData.maxBookingLength) {
+                booker.timeState.numHours++;
+                renderNumHoursPicker()
+            }
+        });
+
+        let prevHourButton = document.createElement('div');
+        prevHourButton.classList.add('incDecButton');
+        prevHourButton.textContent = '<';
+        prevHourButton.addEventListener('click', function() {
+            if (booker.timeState.numHours > 1) {
+                booker.timeState.numHours--;
+                renderNumHoursPicker()
+            }
+        });
+
+        // Create container to hold these elements
+        let numHoursPickerContainer = createElem('div', '#laneNumPickerContainer');
+        numHoursPickerContainer.append(prevHourButton, numHoursDisplay, nextHourButton);
+        return numHoursPickerContainer;
+    }
+
     function fakeTimesApiCall() {
         let response = DUMMY_TIME_DATA;
         booker.timeState = {
             initData: response,
-            selectedTime: { ...response.bookableTimes[0] }
+            selectedTime: { ...response.bookableTimes[0] },
+            numHours: response.defaultBookingLength
         };
         booker.initTimePicker(response);
     }
@@ -433,7 +471,8 @@
             let submitData = {
                 date: submittedDate,
                 lane: booker.laneState.num,
-                time: booker.timeState.selectedTime
+                time: booker.timeState.selectedTime,
+                numHours: booker.timeState.numHours
             }
             console.log("Submitted Date/Lane/Time: ");
             console.log(submitData);
@@ -481,9 +520,7 @@
             // Add lane picker label, and lane picker
             addLabel('How many lanes would you like to book?', dateLanePicker);
             dateLanePicker.append(createLanePicker());
-
-            // render the lane picker based on state which should already be set
-            $('laneNumDisplay').textContent = booker.laneState.num.toString();
+            renderLanePicker(); // render as above
 
             // Add the button to submit date and lane choices and move to the next stage of booking.
             dateLanePicker.append(createSubmitDateLaneButton());
@@ -500,6 +537,11 @@
             // render based on timeState which should already be set.
             renderTimePicker();
 
+            // Add booking length picker along with a label.
+            addLabel('How many hours would you like to book?', timePickerAndSubmitContainer);
+            timePickerAndSubmitContainer.append(createNumHoursPicker());
+            renderNumHoursPicker(); //render as above
+
             // Add the button to submit the date, lane, and time choices and move on.
             timePickerAndSubmitContainer.append(createSubmitTimeButton());
 
@@ -508,7 +550,15 @@
         }
 
         this.initBookablePicker = function() {
-
+            let bookablePickerContainer = createElem('div', '#bookablePickerContainer');
+            this.elem.append(bookablePickerContainer);
+            
+            // TODO
+            // Add bookable picker label and the bookable picker itself.
+            //bookablePickerContainer.append(createBookablePicker());
+            // render based on bookState which should already be set.
+            // Add the button to move forward.
+            // Add the button to return to time picker.
         }
 
         // Set the state of the booker.

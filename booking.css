@@ -22,7 +22,7 @@
 
 
 
-#calGrid, #laneNumPickerContainer, #timePickerContainer, .bookerButton {
+#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton {
     margin: auto;
     background-color: #f6f6f6;
     width: fit-content;
@@ -39,13 +39,13 @@
     margin-top: 20px;
 }
 
-#calGrid > div, #laneNumPickerContainer > div, #timePickerScroller > div {
+#calGrid > div, #laneNumPickerContainer > div, #numHoursPickerContainer > div, #timePickerScroller > div {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#laneNumPickerContainer {
+#laneNumPickerContainer, #numHoursPickerContainer {
     display: flex;
     justify-content: center;
 }
@@ -58,13 +58,13 @@
     background-color: gray;
 }
 
-.laneButton {
+.incDecButton {
     height: 50px;
     width: 50px;
     font-size: 24px;
 }
 
-#laneNumDisplay {
+#laneNumDisplay, #numHoursDisplay{
     height: 50px;
     width: 50px;
     font-size: 24px;
