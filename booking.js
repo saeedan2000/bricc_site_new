@@ -302,7 +302,8 @@
                 date: submittedDate,
                 lane: booker.laneState.num
             }
-            console.log("Submitted Date/Lane: " + JSON.stringify(submitData));
+            console.log("Submitted Date/Lane: ");
+            console.log(submitData);
         });
         return submitDateLaneButton;
     }
@@ -410,6 +411,10 @@
 
     function fakeTimesApiCall() {
         let response = DUMMY_TIME_DATA;
+        booker.timeState = {
+            initData: response,
+            selectedTime: { ...response.bookableTimes[0] }
+        };
         booker.initTimePicker(response);
     }
 
@@ -430,7 +435,8 @@
                 lane: booker.laneState.num,
                 time: booker.timeState.selectedTime
             }
-            console.log("Submitted Date/Lane/Time: " + JSON.stringify(submitData));
+            console.log("Submitted Date/Lane/Time: ");
+            console.log(submitData);
         });
         return submitTimeButton;
     }
@@ -447,6 +453,9 @@
     }
 
     function renderBooker() {
+        // CLEAR whatever was showing in the booker before.
+        booker.elem.textContent = '';
+
         if (booker.overallState == State.DATE_LANE_SCREEN) {
             booker.initDateLanePicker();
         } else if (booker.overallState == State.TIME_SUBMIT_SCREEN) {
@@ -454,11 +463,10 @@
         }
     }
 
-    function Booker(o) {
+    // The init functions require relevant state to be already set.
+    // Generally, we set state, then call init, which calls render;
+    function Booker() {
         this.initDateLanePicker = function() {
-            // CLEAR whatever was showing in the booker before.
-            this.elem.textContent = '';
-            
             // Create a div to hold both the calendar and lane picker.
             let dateLanePicker = createElem('div', '#dateLanePicker');
             this.elem.appendChild(dateLanePicker);
@@ -467,39 +475,21 @@
             addLabel('Please select a date below for your booking', dateLanePicker);
             dateLanePicker.append(createCalendar());
 
-            // Set the state of the calendar if not already set (like coming back from time screen);
-            let todaysDate = new Date();
-            if (this.calState == null) {
-                this.calState = {
-                    selectedYear: todaysDate.getFullYear(),
-                    selectedMonth: todaysDate.getMonth(),
-                    selectedDate: todaysDate.getDate(),
-                    curMonth: todaysDate.getMonth(),
-                    curYear: todaysDate.getFullYear()
-                }
-            }
+            // render the calendar (based on the calState which should already be set
             renderCalendar();
 
             // Add lane picker label, and lane picker
             addLabel('How many lanes would you like to book?', dateLanePicker);
             dateLanePicker.append(createLanePicker());
 
-            // Set the state of the lane picker, again, if not already set.
-            if (booker.laneState == null) {
-                booker.laneState = {
-                    num: DEFAULT_NUM_LANES
-                };
-            }
+            // render the lane picker based on state which should already be set
             $('laneNumDisplay').textContent = booker.laneState.num.toString();
 
             // Add the button to submit date and lane choices and move to the next stage of booking.
             dateLanePicker.append(createSubmitDateLaneButton());
         }
 
-        this.initTimePicker = function(data) {
-            // CLEAR whatever was showing in the booker before.
-            this.elem.textContent = '';
-
+        this.initTimePicker = function() {
             let timePickerAndSubmitContainer = createElem('div', '#timePickerAndSubmitContainer');
             this.elem.append(timePickerAndSubmitContainer);
 
@@ -507,12 +497,7 @@
             addLabel('What time would you like your booking to start?', timePickerAndSubmitContainer);
             timePickerAndSubmitContainer.append(createTimePicker());
 
-            // set state, even if we have to override existing state since we make a fresh api call
-            // every time we get here.
-            booker.timeState = {
-                initData: data,
-                selectedTime: { ...data.bookableTimes[0] }
-            };
+            // render based on timeState which should already be set.
             renderTimePicker();
 
             // Add the button to submit the date, lane, and time choices and move on.
@@ -520,17 +505,22 @@
 
             // Add the button to return to the date/lane pickers.
             timePickerAndSubmitContainer.append(createReturnToDateLaneButton());
+        }
+
+        this.initBookablePicker = function() {
 
         }
 
-        this.init = function() {
-            this.elem = o.elem;
+        // Set the state of the booker.
+        this.setState = function(state) {
+            this.calState = state.calState;
+            this.timeState = state.timeState;
+            this.laneState = state.laneState;
+            this.overallState = state.overallState;
+        }
 
-            // set the initial state
-            this.calState = null;
-            this.timeState = null;
-            this.laneState = null;
-            this.overallState = State.DATE_LANE_SCREEN;
+        this.init = function(elem) {
+            this.elem = elem;
 
             // render the booker
             renderBooker();
@@ -539,9 +529,24 @@
     }
 
     window.addEventListener('load', function() {
-        booker = new Booker({
-            elem: $('bookingContainer')
+        // Create the booker, set its state, then call init.
+        // This allows us to potentially pull a saved state from somewhere to initialize the booker.
+        let todaysDate = new Date();
+        booker = new Booker();
+        booker.setState({
+            calState: {
+                selectedYear: todaysDate.getFullYear(),
+                selectedMonth: todaysDate.getMonth(),
+                selectedDate: todaysDate.getDate(),
+                curMonth: todaysDate.getMonth(),
+                curYear: todaysDate.getFullYear()
+            },
+            laneState: {
+                num: DEFAULT_NUM_LANES
+            },
+            timeState: null,
+            overallState: State.DATE_LANE_SCREEN
         });
-        booker.init();
+        booker.init($('bookingContainer'));
     });
 })();
