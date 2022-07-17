@@ -1,8 +1,11 @@
 "use strict";
 // This file contains the logic for the booking page.
 //
+// Removed bulk booking support for v1.
+//
 // TODO must avoid a clash in slots. We should not recommend a slot that is already selected from a previous booking attempt.
-// but that's a backend thing i think.
+// but that's a backend thing i think. For now this doesn't matter since we aren't initially supporting 
+// bulk bookings.
 (function() {
 
     // as of now not planning to get this from backend, not something likely to change.
@@ -29,10 +32,20 @@
     const DUMMY_BOOKABLE_DATA = [
         {
             type: 'Indoor',
-            lanes: [1, 2],
+            lanes: [1],
             date: '2022-7-16',
             startTime: {
-                hours: 6,
+                hours: 7,
+                minutes: 30
+            },
+            numHours: 1
+        },
+        {
+            type: 'Indoor',
+            lanes: [2],
+            date: '2022-7-16',
+            startTime: {
+                hours: 7,
                 minutes: 30
             },
             numHours: 1
@@ -40,6 +53,26 @@
         {
             type: 'Indoor',
             lanes: [3],
+            date: '2022-7-16',
+            startTime: {
+                hours: 7,
+                minutes: 30
+            },
+            numHours: 1
+        },
+        {
+            type: 'Indoor',
+            lanes: [4],
+            date: '2022-7-16',
+            startTime: {
+                hours: 7,
+                minutes: 30
+            },
+            numHours: 1
+        },
+        {
+            type: 'Indoor',
+            lanes: [5],
             date: '2022-7-16',
             startTime: {
                 hours: 7,
@@ -59,7 +92,37 @@
         },
         {
             type: 'Outdoor',
-            lanes: [3, 4],
+            lanes: [2],
+            date: '2022-7-16',
+            startTime: {
+                hours: 7,
+                minutes: 30
+            },
+            numHours: 1
+        },
+        {
+            type: 'Outdoor',
+            lanes: [3],
+            date: '2022-7-16',
+            startTime: {
+                hours: 7,
+                minutes: 30
+            },
+            numHours: 1
+        },
+        {
+            type: 'Outdoor',
+            lanes: [4],
+            date: '2022-7-16',
+            startTime: {
+                hours: 7,
+                minutes: 30
+            },
+            numHours: 1
+        },
+        {
+            type: 'Outdoor',
+            lanes: [5],
             date: '2022-7-16',
             startTime: {
                 hours: 7,
@@ -151,6 +214,12 @@
         let label = document.createElement('h2');
         label.textContent = str;
         container.appendChild(label);
+    }
+
+    function showError(str, container) {
+        let error = container.querySelector('.error');
+        error.textContent = str;
+        error.classList.remove('hidden');
     }
 
     function getCalendarTiles() {
@@ -505,6 +574,7 @@
 
     function onSlotClick() {
         let data = JSON.parse(this.getAttribute('data'));
+        this.querySelector('.slotTime').classList.toggle('hidden');
         if (removeIfSelected(data)) {
             this.classList.remove('selectedSlotTile');
         } else {
@@ -518,10 +588,16 @@
         let type = document.createElement('h1');
         type.textContent = slot.type;
 
-        let num = document.createElement('h2');
-        num.textContent = 'Net(s) ' + slot.lanes.join(', ');
+        let num = document.createElement('p');
+        if (booker.laneState.num == 1) {
+            num.textContent = 'Net ' + slot.lanes.join(', ');
+        } else {
+            num.textContent = 'Nets: ' + slot.lanes.join(', ');
+        }
 
-        let time = document.createElement('h2');
+        let time = document.createElement('p');
+        time.classList.add('slotTime');
+        time.classList.add('hidden');
         time.textContent = slot.numHours + ' hour(s), from ' +
             convertTimeToString(slot.startTime);
 
@@ -562,7 +638,8 @@
 
         // We want to update slots but keep selected if it's already set. 
         // So you can return but not lose your cart.
-        if (booker.bookState == null) {
+        // Update: removed bulk booking support so always overwrite.
+        if (booker.bookState == null || true) { // TODO: This is where we can turn on bulk.
             booker.bookState = {
                 slots: response,
                 selected: new Set()
@@ -572,6 +649,34 @@
         }
 
         booker.initSlotPicker();
+    }
+
+    function createContactForm() {
+        // create input for email
+        let eLabel = document.createElement('label');
+        eLabel.textContent = 'Email: ';
+        let eIn = createElem('input', '#emailInput');
+        eIn.setAttribute('type', 'text');
+
+        // create newLine
+        let br = document.createElement('br');
+
+        // create input for name
+        let nLabel = document.createElement('label');
+        nLabel.textContent = 'Name: ';
+        let nIn = createElem('input', '#nameInput');
+        nIn.setAttribute('type', 'text');
+
+        return [eLabel, eIn, br, nLabel, nIn];
+    }
+
+    // TODO
+    // Maybe validation should happen on the server side.
+    function contactInfoIsValid(info) {
+        if (info.email == '' || info.name == '') {
+            return false;
+        }
+        return true;
     }
 
     function renderBooker() {
@@ -669,20 +774,38 @@
             slotPickerAndSubmitContainer.append(createElem('div','#slotPickerContainer'));
             renderSlotPicker();
 
+            // Add the container for errors
+            let error = document.createElement('h2');
+            error.classList.add('error', 'hidden');
+            slotPickerAndSubmitContainer.append(error);
+
+            // Add the form for customer info.
+            addLabel('Please provide your contact information below: ', slotPickerAndSubmitContainer);
+            slotPickerAndSubmitContainer.append(...createContactForm()); // does not need render() since static
+
             // Add the button to move forward.
             slotPickerAndSubmitContainer.append(
                 createBookerButton('Pay', function() {
                     // TODO 
+                    let cInfo =  {
+                        email: $('emailInput').value,
+                        name: $('nameInput').value
+                    };
+                    if (!contactInfoIsValid(cInfo)) {
+                        showError('Invalid name or email.', slotPickerAndSubmitContainer);
+                    } else {
+                        error.classList.add('hidden');
+                    }
                     booker.bookState.selected.forEach(function(s) {
                         console.log(s);
                     });
                 }));
 
-            // Add the button to return to time picker.
+            // Instead of going back to time picker, I think it's more efficient to go all the way back.
             slotPickerAndSubmitContainer.append(
                 createBookerButton('Go Back', function() {
                     // update booker state and rerender
-                    booker.overallState = State.TIME_SUBMIT_SCREEN;
+                    booker.overallState = State.DATE_LANE_SCREEN;
                     renderBooker();
                 }));
         }
