@@ -10,9 +10,10 @@
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                 'September', 'October', 'November', 'December'];
 
-    const State = {
+    const State = {     // essentially an enum
         DATE_LANE_SCREEN: 0,
-        TIME_SUBMIT_SCREEN: 1
+        TIME_SUBMIT_SCREEN: 1,
+        BOOKABLE_SCREEN: 2
     };
 
     let booker;
@@ -22,6 +23,49 @@
     let selectedCalTile, selectedTimeTile = null;
 
     // TODO 
+    const DUMMY_BOOKABLE_DATA = [
+        {
+            type: 'Indoor',
+            lanes: [1, 2],
+            date: '2022-7-16',
+            startTime: {
+                hours: 6,
+                minutes: 30
+            },
+            numHours: 1
+        },
+        {
+            type: 'Indoor',
+            lanes: [3],
+            date: '2022-7-16',
+            startTime: {
+                hours: 7,
+                minutes: 30
+            },
+            numHours: 1
+        },
+        {
+            type: 'Outdoor',
+            lanes: [1],
+            date: '2022-7-16',
+            startTime: {
+                hours: 7,
+                minutes: 30
+            },
+            numHours: 1
+        },
+        {
+            type: 'Outdoor',
+            lanes: [3, 4],
+            date: '2022-7-16',
+            startTime: {
+                hours: 7,
+                minutes: 30
+            },
+            numHours: 1
+        }
+    ];
+
     const DUMMY_TIME_DATA = {
         openingTime: {
             hours: 5,
@@ -285,7 +329,7 @@
     }
 
     function createSubmitDateLaneButton() {
-        let submitDateLaneButton = createElem('div', '#submitDateLaneButton');
+        let submitDateLaneButton = document.createElement('div');
         submitDateLaneButton.classList.add('bookerButton');
         submitDateLaneButton.textContent = 'Next';
         submitDateLaneButton.addEventListener('click', function() {
@@ -451,16 +495,18 @@
         booker.timeState = {
             initData: response,
             selectedTime: { ...response.bookableTimes[0] },
-            numHours: response.defaultBookingLength
+            numHours: response.defaultBookingLength // TODO this could persist
         };
-        booker.initTimePicker(response);
+        booker.initTimePicker();
     }
 
     function createSubmitTimeButton() {
-        let submitTimeButton = createElem('div', '#submitTimeButton'); 
+        let submitTimeButton = document.createElement('div'); 
         submitTimeButton.classList.add('bookerButton');
         submitTimeButton.textContent = 'Next';
         submitTimeButton.addEventListener('click', function() {
+            booker.overallState = State.BOOKABLE_SCREEN;
+            renderBooker();
 
             // temp logging
             let submittedDate = {
@@ -491,6 +537,96 @@
         return backButton;
     }
 
+    // Concatenate everything in the slot object into a string
+    function slotKeyGen(s) {
+        return [s.type, ...[...s.lanes].sort(), s.date, s.startTime.hours, 
+            s.startTime.minutes, s.numHours].join(',');
+    }
+
+    // Returns true if the given slot was selected and got removed.
+    function removeIfSelected(s1) {
+        let isSelected = false;
+        booker.bookState.selected.forEach(function(s2) {
+            if (slotKeyGen(s1) == slotKeyGen(s2)) {
+                booker.bookState.selected.delete(s2);
+                isSelected = true;
+            }
+        });
+        return isSelected;
+    }
+
+    function onSlotClick() {
+        let data = JSON.parse(this.getAttribute('data'));
+        console.log(slotKeyGen(data));
+        if (removeIfSelected(data)) {
+            this.classList.remove('selectedSlotTile');
+        } else {
+            booker.bookState.selected.add(data);
+            this.classList.add('selectedSlotTile');
+        }
+    }
+
+    function createTile(slot, isSelected) {
+        // create elements for all the data on a tile
+        let type = document.createElement('h1');
+        type.textContent = slot.type;
+
+        let num = document.createElement('h2');
+        num.textContent = 'Net(s) ' + slot.lanes.join(', ');
+
+        let time = document.createElement('h2');
+        time.textContent = slot.numHours + ' hour(s), from ' +
+            convertTimeToString(slot.startTime);
+
+        // create the tile and append everything to it.
+        let tile = createElem('div', '.slotTile');
+        tile.setAttribute('data', JSON.stringify(slot));
+        tile.addEventListener('click', onSlotClick);
+        if (slot.type == "Indoor") {
+            tile.classList.add('indoorSlotTile');
+        } 
+        if (isSelected) {
+            tile.classList.add('selectedSlotTile');
+        }
+        tile.append(type, num, time);
+        return tile;
+    }
+
+    function renderSlotPicker() {
+        let cont = $('slotPickerContainer');
+        // Create and append a tile for each unselected slot
+        booker.bookState.slots.forEach(function(s) {
+            cont.append(createTile(s, false));
+        });
+
+        // Create the boundary between selected and unselected slots
+        let b = createElem('h1', '#slotBoundary');
+        b.textContent = 'Your Selected Slots: ';
+        cont.append(b);
+
+        // Create and append a tile for each selected slot
+        booker.bookState.selected.forEach(function(s) {
+            cont.append(createTile(s, true));
+        });
+    }
+
+    function fakeBookableApiCall() {
+        let response = DUMMY_BOOKABLE_DATA;
+
+        // We want to update slots but keep selected if it's already set. 
+        // So you can return but not lose your cart.
+        if (booker.bookState == null) {
+            booker.bookState = {
+                slots: response,
+                selected: new Set()
+            };
+        } else {
+            booker.bookState.slots = response;
+        }
+
+        booker.initSlotPicker();
+    }
+
     function renderBooker() {
         // CLEAR whatever was showing in the booker before.
         booker.elem.textContent = '';
@@ -499,6 +635,8 @@
             booker.initDateLanePicker();
         } else if (booker.overallState == State.TIME_SUBMIT_SCREEN) {
             fakeTimesApiCall();
+        } else if (booker.overallState == State.BOOKABLE_SCREEN) {
+            fakeBookableApiCall();
         }
     }
 
@@ -507,27 +645,27 @@
     function Booker() {
         this.initDateLanePicker = function() {
             // Create a div to hold both the calendar and lane picker.
-            let dateLanePicker = createElem('div', '#dateLanePicker');
-            this.elem.appendChild(dateLanePicker);
+            let dateLanePickerContainer = document.createElement('div');
+            this.elem.appendChild(dateLanePickerContainer);
 
             // Add date picker label and calendar/datepicker
-            addLabel('Please select a date below for your booking', dateLanePicker);
-            dateLanePicker.append(createCalendar());
+            addLabel('Please select a date below for your booking', dateLanePickerContainer);
+            dateLanePickerContainer.append(createCalendar());
 
             // render the calendar (based on the calState which should already be set
             renderCalendar();
 
             // Add lane picker label, and lane picker
-            addLabel('How many lanes would you like to book?', dateLanePicker);
-            dateLanePicker.append(createLanePicker());
+            addLabel('How many lanes would you like to book?', dateLanePickerContainer);
+            dateLanePickerContainer.append(createLanePicker());
             renderLanePicker(); // render as above
 
             // Add the button to submit date and lane choices and move to the next stage of booking.
-            dateLanePicker.append(createSubmitDateLaneButton());
+            dateLanePickerContainer.append(createSubmitDateLaneButton());
         }
 
         this.initTimePicker = function() {
-            let timePickerAndSubmitContainer = createElem('div', '#timePickerAndSubmitContainer');
+            let timePickerAndSubmitContainer = document.createElement('div');
             this.elem.append(timePickerAndSubmitContainer);
 
             // Add time picker label and the time picker itself.
@@ -549,13 +687,17 @@
             timePickerAndSubmitContainer.append(createReturnToDateLaneButton());
         }
 
-        this.initBookablePicker = function() {
-            let bookablePickerContainer = createElem('div', '#bookablePickerContainer');
-            this.elem.append(bookablePickerContainer);
+        this.initSlotPicker = function() {
+            let slotPickerAndSubmitContainer = document.createElement('div');
+            this.elem.append(slotPickerAndSubmitContainer);
             
+            // Add label. Most of the construction is tile-by-tile, so no 
+            // createBookablePicker()
+            addLabel('Please select from the slots we have available: ', slotPickerAndSubmitContainer);
+            slotPickerAndSubmitContainer.append(createElem('div','#slotPickerContainer'));
+            renderSlotPicker();
+
             // TODO
-            // Add bookable picker label and the bookable picker itself.
-            //bookablePickerContainer.append(createBookablePicker());
             // render based on bookState which should already be set.
             // Add the button to move forward.
             // Add the button to return to time picker.
@@ -595,6 +737,7 @@
                 num: DEFAULT_NUM_LANES
             },
             timeState: null,
+            bookState: null,
             overallState: State.DATE_LANE_SCREEN
         });
         booker.init($('bookingContainer'));

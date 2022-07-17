@@ -50,7 +50,7 @@
     justify-content: center;
 }
 
-.clickableTile {
+.clickableTile, .slotTile {
     border: 1px solid black;
 }
 
@@ -87,4 +87,42 @@
     font-size: 20px;
     margin-top: 2px;
     margin-bottom: 2px;
+}
+
+#slotPickerContainer {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#slotBoundary {
+    margin-top: 95px;
+    order: 2;
+}
+
+.slotTile {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    order: 1;
+    margin-bottom: 5px;
+}
+
+.slotTile > h1 {
+    font-size: 22px;
+}
+
+.slotTile > h2 {
+    font-size: 16px;
+}
+
+.indoorSlotTile {
+    background-color: #d3d3d3;
+}
+
+.selectedSlotTile {
+    border: 5px solid #52d6f4;
+    order: 3;
 }
