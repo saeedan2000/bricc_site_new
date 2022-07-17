@@ -791,23 +791,29 @@
                         email: $('emailInput').value,
                         name: $('nameInput').value
                     };
-                    if (!contactInfoIsValid(cInfo)) {
+                    if (booker.bookState.selected.size == 0) {
+                        showError('Please select the slot(s) you would like to book.', 
+                            slotPickerAndSubmitContainer);
+                    } else if (!contactInfoIsValid(cInfo)) {
                         showError('Invalid name or email.', slotPickerAndSubmitContainer);
                     } else {
                         error.classList.add('hidden');
                     }
+                    booker.bookState.contact = cInfo;
+                    console.log(cInfo);
                     booker.bookState.selected.forEach(function(s) {
                         console.log(s);
                     });
                 }));
 
             // Instead of going back to time picker, I think it's more efficient to go all the way back.
-            slotPickerAndSubmitContainer.append(
+            // NOTE: here is where we would add more if we support bulk
+            /*slotPickerAndSubmitContainer.append(
                 createBookerButton('Go Back', function() {
                     // update booker state and rerender
                     booker.overallState = State.DATE_LANE_SCREEN;
                     renderBooker();
-                }));
+                }));*/
         }
 
         // Set the state of the booker.
