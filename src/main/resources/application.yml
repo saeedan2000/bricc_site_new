@@ -1,0 +1,21 @@
+bricc:
+    config:
+        startTime:
+            hour: 7
+            minutes: 30
+        numHours: 16
+
+        specialTimings:
+            - date: 10-20-2022
+              startTime:
+                  hour: 9
+                  minutes: 0
+              numHours: 5
+
+            - date: 10-21-2022
+              startTime:
+                  hour: 10
+                  minutes: 0
+              numHours: 7
+
+        numLanes: 5
