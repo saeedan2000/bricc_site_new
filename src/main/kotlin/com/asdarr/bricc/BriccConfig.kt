@@ -1,8 +1,7 @@
-package com.example.bricc
+package com.asdarr.bricc
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
-
 
 data class Time(
     val hour: Int,
@@ -15,10 +14,17 @@ data class SpecialTime(
     val numHours: Int
 )
 
+data class Announcement(
+    val subject: String,
+    val text: String
+)
+
 @ConstructorBinding
 @ConfigurationProperties(prefix = "bricc.config")
 data class BriccConfig(
     val startTime: Time,
     val numHours: Int,
-    val specialTimings: List<SpecialTime>
+    val numLanes: Int,
+    val specialTimings: List<SpecialTime>,
+    val announcements: List<Announcement>
 )

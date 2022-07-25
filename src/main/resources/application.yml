@@ -19,3 +19,14 @@ bricc:
               numHours: 7
 
         numLanes: 5
+
+        announcements:
+            - subject: Test Announcement
+              text: This announcement is a test announcement. The purpose of it is to test the announcement functionality
+spring:
+    datasource:
+        url: "jdbc:mysql://localhost:3306/bricc_schema"
+        username: root
+        password: wyandotte
+server:
+    port: 9090

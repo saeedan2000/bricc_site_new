@@ -1,4 +1,4 @@
-package com.example.bricc
+package com.asdarr.bricc
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
