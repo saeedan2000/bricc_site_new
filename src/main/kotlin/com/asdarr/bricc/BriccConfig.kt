@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
 
 data class Time(
-    val hour: Int,
+    val hours: Int,
     val minutes: Int
 )
 
