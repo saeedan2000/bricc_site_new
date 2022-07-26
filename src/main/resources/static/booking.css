@@ -1,3 +1,8 @@
+
+#bookingContainer h2 {
+    margin-top: 50px;
+}
+
 #calHeader > div {
     height: 30px;
 }
@@ -22,7 +27,7 @@
 
 
 
-#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton {
+#calGrid, #timePickerContainer, .bookerButton {
     margin: auto;
     background-color: #f6f6f6;
     width: fit-content;
@@ -39,17 +44,26 @@
     margin-top: 20px;
 }
 
-#calGrid > div, #laneNumPickerContainer > div, 
-#numHoursPickerContainer > div, #timePickerScroller > div,
+#calGrid > div, .numPickerContainer > div, #timePickerScroller > div,
 .slotTile > * {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#laneNumPickerContainer, #numHoursPickerContainer {
+.numPickerContainer  {
     display: flex;
     justify-content: center;
+}
+
+.numPickerContainer > div {
+    background-color: #f6f6f6;
+    box-shadow: 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.numPickerContainer > p {
+    font-size: 22px;
+    padding-right: 20px;
 }
 
 .clickableTile, .slotTile {

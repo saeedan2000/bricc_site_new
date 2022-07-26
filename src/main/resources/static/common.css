@@ -1,18 +1,46 @@
 body {
     width: 100%;
+    min-height: 100vh;
     margin: 0px;
     font-family: Arial;
-    background-color: white;
+    background-color:  #7F9488;
+    /*background-image: url("photos/grass.jpg");
+    background-size: cover;*/
+}
+
+#banner {
+  position: relative;
+  background-color: #f6f6f6;
+}
+
+#banner > img {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+#banner > p {
+  font-style: italic;
+  font-size: 18px;
+}
+
+#contactInfo {
+    display: flex;
+    justify-content: space-around;
 }
 
 h1 {
+    margin: 0px;
+    padding-top: 20px;
     color: #363538;
 }
 
 #contentContainer {
     margin: auto;
     max-width: 960px;
+    min-height: 100vh;
     text-align: center;
+    background-color: white;
 }
 
 #navBar {
@@ -25,12 +53,11 @@ h1 {
 }
 
 #navBar > a {
-    color: #363538;
+    color: black;
     text-decoration: none;
-    padding: 4px 30px 4px 30px;
+    padding: 10px 30px 10px 30px;
     width: min-content;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 22px;
     display: block;
     margin: 0px;
     white-space: nowrap;
@@ -39,4 +66,10 @@ h1 {
 #navBar > a:hover {
     background-color: #52d6f4;
     color: #363538;
+}
+
+#announcements {
+    margin: 0px;
+    padding: 10px;
+    background-color: #b1430c;
 }

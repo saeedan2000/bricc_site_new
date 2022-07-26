@@ -9,24 +9,27 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	/ac824e67/
+#announcements	src/main/resources/static/common.css	/^#announcements {$/;"	i
+#banner	src/main/resources/static/common.css	/^#banner {$/;"	i
+#banner > img	src/main/resources/static/common.css	/^#banner > img {$/;"	s
+#banner > p	src/main/resources/static/common.css	/^#banner > p {$/;"	s
+#bookingContainer h2	src/main/resources/static/booking.css	/^#bookingContainer h2 {$/;"	s
 #calGrid	build/resources/main/static/booking.css	/^#calGrid {$/;"	i
 #calGrid	build/resources/main/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
 #calGrid	src/main/resources/static/booking.css	/^#calGrid {$/;"	i
-#calGrid	src/main/resources/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
+#calGrid	src/main/resources/static/booking.css	/^#calGrid, #timePickerContainer, .bookerButton {$/;"	i
 #calGrid > div	build/resources/main/static/booking.css	/^#calGrid > div, #laneNumPickerContainer > div, $/;"	s
-#calGrid > div	src/main/resources/static/booking.css	/^#calGrid > div, #laneNumPickerContainer > div, $/;"	s
+#calGrid > div	src/main/resources/static/booking.css	/^#calGrid > div, .numPickerContainer > div, #timePickerScroller > div,$/;"	s
 #calHeader > div	build/resources/main/static/booking.css	/^#calHeader > div {$/;"	s
 #calHeader > div	src/main/resources/static/booking.css	/^#calHeader > div {$/;"	s
+#contactInfo	src/main/resources/static/common.css	/^#contactInfo {$/;"	i
 #contentContainer	build/resources/main/static/common.css	/^#contentContainer {$/;"	i
 #contentContainer	src/main/resources/static/common.css	/^#contentContainer {$/;"	i
 #laneNumDisplay	build/resources/main/static/booking.css	/^#laneNumDisplay, #numHoursDisplay{$/;"	i
 #laneNumDisplay	src/main/resources/static/booking.css	/^#laneNumDisplay, #numHoursDisplay{$/;"	i
 #laneNumPickerContainer	build/resources/main/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
 #laneNumPickerContainer	build/resources/main/static/booking.css	/^#laneNumPickerContainer, #numHoursPickerContainer {$/;"	i
-#laneNumPickerContainer	src/main/resources/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
-#laneNumPickerContainer	src/main/resources/static/booking.css	/^#laneNumPickerContainer, #numHoursPickerContainer {$/;"	i
 #laneNumPickerContainer > div	build/resources/main/static/booking.css	/^#calGrid > div, #laneNumPickerContainer > div, $/;"	s
-#laneNumPickerContainer > div	src/main/resources/static/booking.css	/^#calGrid > div, #laneNumPickerContainer > div, $/;"	s
 #monthYearDisplay	build/resources/main/static/booking.css	/^#monthYearDisplay {$/;"	i
 #monthYearDisplay	src/main/resources/static/booking.css	/^#monthYearDisplay {$/;"	i
 #navBar	build/resources/main/static/common.css	/^#navBar {$/;"	i
@@ -39,10 +42,7 @@
 #numHoursDisplay	src/main/resources/static/booking.css	/^#laneNumDisplay, #numHoursDisplay{$/;"	i
 #numHoursPickerContainer	build/resources/main/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
 #numHoursPickerContainer	build/resources/main/static/booking.css	/^#laneNumPickerContainer, #numHoursPickerContainer {$/;"	i
-#numHoursPickerContainer	src/main/resources/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
-#numHoursPickerContainer	src/main/resources/static/booking.css	/^#laneNumPickerContainer, #numHoursPickerContainer {$/;"	i
 #numHoursPickerContainer > div	build/resources/main/static/booking.css	/^#numHoursPickerContainer > div, #timePickerScroller > div,$/;"	s
-#numHoursPickerContainer > div	src/main/resources/static/booking.css	/^#numHoursPickerContainer > div, #timePickerScroller > div,$/;"	s
 #selectedDateDisplay	build/resources/main/static/booking.css	/^#selectedDateDisplay{$/;"	i
 #selectedDateDisplay	src/main/resources/static/booking.css	/^#selectedDateDisplay{$/;"	i
 #slotBoundary	build/resources/main/static/booking.css	/^#slotBoundary {$/;"	i
@@ -51,19 +51,19 @@
 #slotPickerContainer	src/main/resources/static/booking.css	/^#slotPickerContainer {$/;"	i
 #timePickerContainer	build/resources/main/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
 #timePickerContainer	build/resources/main/static/booking.css	/^#timePickerContainer {$/;"	i
-#timePickerContainer	src/main/resources/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
+#timePickerContainer	src/main/resources/static/booking.css	/^#calGrid, #timePickerContainer, .bookerButton {$/;"	i
 #timePickerContainer	src/main/resources/static/booking.css	/^#timePickerContainer {$/;"	i
 #timePickerScroller	build/resources/main/static/booking.css	/^#timePickerScroller {$/;"	i
 #timePickerScroller	src/main/resources/static/booking.css	/^#timePickerScroller {$/;"	i
 #timePickerScroller > div	build/resources/main/static/booking.css	/^#numHoursPickerContainer > div, #timePickerScroller > div,$/;"	s
-#timePickerScroller > div	src/main/resources/static/booking.css	/^#numHoursPickerContainer > div, #timePickerScroller > div,$/;"	s
+#timePickerScroller > div	src/main/resources/static/booking.css	/^#calGrid > div, .numPickerContainer > div, #timePickerScroller > div,$/;"	s
 $	build/resources/main/static/booking.js	/^    function $(id){$/;"	f	function:anonymousFunction1394fbcd0100
 $	build/resources/main/static/common.js	/^    function $(id){$/;"	f	function:anonymousFunctiond873e92d0100
 $	src/main/resources/static/booking.js	/^    function $(id){$/;"	f	function:anonymousFunction5d2eede50100
 $	src/main/resources/static/common.js	/^    function $(id){$/;"	f	function:anonymousFunction4f0bf8450100
 .bookerButton	build/resources/main/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	c
 .bookerButton	build/resources/main/static/booking.css	/^.bookerButton {$/;"	c
-.bookerButton	src/main/resources/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	c
+.bookerButton	src/main/resources/static/booking.css	/^#calGrid, #timePickerContainer, .bookerButton {$/;"	c
 .bookerButton	src/main/resources/static/booking.css	/^.bookerButton {$/;"	c
 .clickableTile	build/resources/main/static/booking.css	/^.clickableTile, .slotTile {$/;"	c
 .clickableTile	src/main/resources/static/booking.css	/^.clickableTile, .slotTile {$/;"	c
@@ -75,6 +75,10 @@ $	src/main/resources/static/common.js	/^    function $(id){$/;"	f	function:anony
 .incDecButton	src/main/resources/static/booking.css	/^.incDecButton {$/;"	c
 .indoorSlotTile	build/resources/main/static/booking.css	/^.indoorSlotTile {$/;"	c
 .indoorSlotTile	src/main/resources/static/booking.css	/^.indoorSlotTile {$/;"	c
+.numPickerContainer	src/main/resources/static/booking.css	/^.numPickerContainer  {$/;"	c
+.numPickerContainer > div	src/main/resources/static/booking.css	/^#calGrid > div, .numPickerContainer > div, #timePickerScroller > div,$/;"	s
+.numPickerContainer > div	src/main/resources/static/booking.css	/^.numPickerContainer > div {$/;"	s
+.numPickerContainer > p	src/main/resources/static/booking.css	/^.numPickerContainer > p {$/;"	s
 .selectedSlotTile	build/resources/main/static/booking.css	/^.selectedSlotTile {$/;"	c
 .selectedSlotTile	src/main/resources/static/booking.css	/^.selectedSlotTile {$/;"	c
 .selectedTile	build/resources/main/static/booking.css	/^.selectedTile {$/;"	c
@@ -100,8 +104,8 @@ $	src/main/resources/static/common.js	/^    function $(id){$/;"	f	function:anony
 <lambda>	build.gradle.kts	/^repositories {$/;"	m
 <lambda>	build.gradle.kts	/^tasks.withType<KotlinCompile> {$/;"	m
 <lambda>	build.gradle.kts	/^tasks.withType<Test> {$/;"	m
-<lambda>	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^        val todayString = body.date.let { "${it.year}-${it.month}-${it.date}" }$/;"	m	package:com.asdarr.bricc
-<lambda>	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^package com.asdarr.bricc$/;"	m	package:com.asdarr.bricc
+<lambda>	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        val todayString = input.date.let { "${it.year}-${it.month}-${it.date}" }$/;"	m	method:com.asdarr.bricc.TimeService.getAvailableStartTimes
+<lambda>	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^package com.asdarr.bricc$/;"	m	method:com.asdarr.bricc.TimeService.getAvailableStartTimes
 APP_BASE_NAME	gradlew.bat	/^set APP_BASE_NAME=%~n0$/;"	v
 APP_HOME	gradlew.bat	/^for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi$/;"	v
 APP_HOME	gradlew.bat	/^set APP_HOME=%DIRNAME%$/;"	v
@@ -115,8 +119,8 @@ BRICC Home Page	build/resources/main/static/booking.html	/^            <h1>BRICC
 BRICC Home Page	build/resources/main/static/index.html	/^            <h1>BRICC Home Page<\/h1>$/;"	h
 BRICC Home Page	build/resources/main/static/index.html	/^        <title>BRICC Home Page<\/title>$/;"	j
 BRICC Home Page	src/main/resources/static/booking.html	/^            <h1>BRICC Home Page<\/h1>$/;"	h
-BRICC Home Page	src/main/resources/static/index.html	/^            <h1>BRICC Home Page<\/h1>$/;"	h
 BRICC Home Page	src/main/resources/static/index.html	/^        <title>BRICC Home Page<\/title>$/;"	j
+Bellevue Redmond Indoor Cricket Center	src/main/resources/static/index.html	/^                <h1>Bellevue Redmond Indoor Cricket Center<\/h1>$/;"	h
 Booker	build/resources/main/static/booking.js	/^    function Booker() {$/;"	c	function:anonymousFunction1394fbcd0100
 Booker	src/main/resources/static/booking.js	/^    function Booker() {$/;"	c	function:anonymousFunction5d2eede50100
 BriccApplication	src/main/kotlin/com/asdarr/bricc/BriccApplication.kt	/^class BriccApplication$/;"	c	package:com.asdarr.bricc
@@ -130,7 +134,7 @@ DIRNAME	gradlew.bat	/^if "%DIRNAME%"=="" set DIRNAME=.$/;"	v
 DIRNAME	gradlew.bat	/^set DIRNAME=%~dp0$/;"	v
 DUMMY_TIME_DATA	build/resources/main/static/booking.js	/^    const DUMMY_TIME_DATA = {$/;"	v	function:anonymousFunction1394fbcd0100
 DUMMY_TIME_DATA	src/main/resources/static/booking.js	/^    const DUMMY_TIME_DATA = {$/;"	v	function:anonymousFunction5d2eede50100
-Date	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^data class Date($/;"	c	package:com.asdarr.bricc
+Date	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^data class Date($/;"	c	package:com.asdarr.bricc
 Default	.idea/workspace.xml	/^    <task active="true" id="Default" summary="Default task">$/;"	i
 EXIT_CODE	gradlew.bat	/^if %EXIT_CODE% equ 0 set EXIT_CODE=1$/;"	v
 EXIT_CODE	gradlew.bat	/^set EXIT_CODE=%ERRORLEVEL%$/;"	v
@@ -151,12 +155,14 @@ State	build/resources/main/static/booking.js	/^    const State = {     \/\/ esse
 State	src/main/resources/static/booking.js	/^    const State = {     \/\/ essentially an enum$/;"	v	function:anonymousFunction5d2eede50100
 TIME_SUBMIT_SCREEN	build/resources/main/static/booking.js	/^        TIME_SUBMIT_SCREEN: 1,$/;"	p	variable:anonymousFunction1394fbcd0100.State
 TIME_SUBMIT_SCREEN	src/main/resources/static/booking.js	/^        TIME_SUBMIT_SCREEN: 1,$/;"	p	variable:anonymousFunction5d2eede50100.State
+Test Announcement	src/main/resources/static/index.html	/^                <h2>Test Announcement<\/h2>$/;"	i
 Time	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^data class Time($/;"	c	package:com.asdarr.bricc
-TimeWithAvailability	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^data class TimeWithAvailability($/;"	c	package:com.asdarr.bricc
+TimeService	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^class TimeService($/;"	c	package:com.asdarr.bricc
+TimeWithAvailability	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^data class TimeWithAvailability($/;"	c	package:com.asdarr.bricc
 TimesPostBody	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^data class TimesPostBody($/;"	c	package:com.asdarr.bricc
 addLabel	build/resources/main/static/booking.js	/^    function addLabel(str, container) {$/;"	f	function:anonymousFunction1394fbcd0100
 addLabel	src/main/resources/static/booking.js	/^    function addLabel(str, container) {$/;"	f	function:anonymousFunction5d2eede50100
-announcements	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val announcements: List<Announcement>$/;"	C	class:com.asdarr.bricc.BriccConfig
+announcements	src/main/resources/static/index.html	/^            <div id="announcements">$/;"	I
 anonymousFunction1394fbcd0100	build/resources/main/static/booking.js	/^(function() {$/;"	f
 anonymousFunction1394fbcd1700	build/resources/main/static/booking.js	/^        ['Sat', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sun'].forEach(function(elem) { $/;"	f
 anonymousFunction1394fbcd1800	build/resources/main/static/booking.js	/^        nextLaneButton.addEventListener('click', function() {$/;"	f
@@ -243,6 +249,8 @@ anonymousObjectd873e92d0205	build/resources/main/static/common.js	/^            
 anonymousObjectd873e92d0305	build/resources/main/static/common.js	/^            {$/;"	v	variable:anonymousFunctiond873e92d0100.navBarInput
 areEqual	build/resources/main/static/booking.js	/^    function areEqual(t1, t2) {$/;"	f	function:anonymousFunction1394fbcd0100
 areEqual	src/main/resources/static/booking.js	/^    function areEqual(t1, t2) {$/;"	f	function:anonymousFunction5d2eede50100
+availableStartTimes	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    fun availableStartTimes(@RequestBody body: TimesPostBody): List<TimeWithAvailability> {$/;"	m	class:com.asdarr.bricc.RestController
+banner	src/main/resources/static/index.html	/^            <div id="banner">$/;"	I
 body	build/resources/main/static/common.css	/^body {$/;"	s
 body	src/main/resources/static/common.css	/^body {$/;"	s
 bookState	build/resources/main/static/booking.js	/^            bookState: null,$/;"	p	variable:anonymousObject1394fbcd2505
@@ -255,6 +263,7 @@ booker.timeState	build/resources/main/static/booking.js	/^        booker.timeSta
 booker.timeState	src/main/resources/static/booking.js	/^        booker.timeState = {$/;"	p
 bookingContainer	build/resources/main/static/booking.html	/^            <div id="bookingContainer"><\/div> $/;"	I
 bookingContainer	src/main/resources/static/booking.html	/^            <div id="bookingContainer"><\/div> $/;"	I
+bookingContainer	src/main/resources/static/index.html	/^            <div id="bookingContainer"><\/div> $/;"	I
 cInfo	build/resources/main/static/booking.js	/^                    let cInfo =  {$/;"	v	function:anonymousFunction1394fbcd2200
 cInfo	src/main/resources/static/booking.js	/^                    let cInfo =  {$/;"	v	function:anonymousFunction5d2eede52200
 calState	build/resources/main/static/booking.js	/^            calState: {$/;"	p	variable:anonymousObject1394fbcd2505
@@ -265,8 +274,11 @@ com.asdarr.bricc	src/main/kotlin/com/asdarr/bricc/BriccApplication.kt	/^package 
 com.asdarr.bricc	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^package com.asdarr.bricc$/;"	p
 com.asdarr.bricc	src/main/kotlin/com/asdarr/bricc/ReservationRepository.kt	/^package com.asdarr.bricc$/;"	p
 com.asdarr.bricc	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^package com.asdarr.bricc$/;"	p
+com.asdarr.bricc	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^package com.asdarr.bricc$/;"	p
 com.asdarr.bricc	src/test/kotlin/com/asdarr/bricc/BriccApplicationTests.kt	/^package com.asdarr.bricc$/;"	p
-config	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    private val config: BriccConfig$/;"	C	class:com.asdarr.bricc.RestController
+config	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    private val config: BriccConfig,$/;"	C	class:com.asdarr.bricc.RestController
+config	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^    private val config: BriccConfig$/;"	C	class:com.asdarr.bricc.TimeService
+contactInfo	src/main/resources/static/index.html	/^                <div id="contactInfo">$/;"	I
 contactInfoIsValid	build/resources/main/static/booking.js	/^    function contactInfoIsValid(info) {$/;"	f	function:anonymousFunction1394fbcd0100
 contactInfoIsValid	src/main/resources/static/booking.js	/^    function contactInfoIsValid(info) {$/;"	f	function:anonymousFunction5d2eede50100
 contentContainer	build/resources/main/static/booking.html	/^        <div id="contentContainer">$/;"	I
@@ -276,7 +288,6 @@ contentContainer	src/main/resources/static/index.html	/^        <div id="content
 contextLoads	src/test/kotlin/com/asdarr/bricc/BriccApplicationTests.kt	/^	fun contextLoads() {$/;"	m	class:com.asdarr.bricc.BriccApplicationTests
 convertTimeToString	build/resources/main/static/booking.js	/^    function convertTimeToString(time) {$/;"	f	function:anonymousFunction1394fbcd0100
 convertTimeToString	src/main/resources/static/booking.js	/^    function convertTimeToString(time) {$/;"	f	function:anonymousFunction5d2eede50100
-convertToMinutes	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^fun convertToMinutes(time: Time): Int {$/;"	m	package:com.asdarr.bricc
 createBookerButton	build/resources/main/static/booking.js	/^    function createBookerButton(text, onClick) {$/;"	f	function:anonymousFunction1394fbcd0100
 createBookerButton	src/main/resources/static/booking.js	/^    function createBookerButton(text, onClick) {$/;"	f	function:anonymousFunction5d2eede50100
 createCalendar	build/resources/main/static/booking.js	/^    function createCalendar() {$/;"	f	function:anonymousFunction1394fbcd0100
@@ -293,6 +304,7 @@ createTile	build/resources/main/static/booking.js	/^    function createTile(slot
 createTile	src/main/resources/static/booking.js	/^    function createTile(slot, isSelected) {$/;"	f	function:anonymousFunction5d2eede50100
 createTimePicker	build/resources/main/static/booking.js	/^    function createTimePicker() {$/;"	f	function:anonymousFunction1394fbcd0100
 createTimePicker	src/main/resources/static/booking.js	/^    function createTimePicker() {$/;"	f	function:anonymousFunction5d2eede50100
+cur	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        var cur = start$/;"	v	method:com.asdarr.bricc.TimeService.getAvailableStartTimes
 curMonth	build/resources/main/static/booking.js	/^                curMonth: todaysDate.getMonth(),$/;"	p	property:anonymousObject1394fbcd2505.calState
 curMonth	src/main/resources/static/booking.js	/^                curMonth: todaysDate.getMonth(),$/;"	p	property:anonymousObject5d2eede52505.calState
 curYear	build/resources/main/static/booking.js	/^                curYear: todaysDate.getFullYear()$/;"	p	property:anonymousObject1394fbcd2505.calState
@@ -310,10 +322,10 @@ date	build/resources/main/static/booking.js	/^            date: '2022-7-16',$/;"
 date	build/resources/main/static/booking.js	/^            date: '2022-7-16',$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0905
 date	build/resources/main/static/booking.js	/^            date: '2022-7-16',$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0a05
 date	build/resources/main/static/booking.js	/^            date: '2022-7-16',$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0b05
-date	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val date: String,$/;"	C	class:com.asdarr.bricc.SpecialTime
+date	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val date: Date,$/;"	C	class:com.asdarr.bricc.SpecialTime
+date	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val date: String$/;"	C	class:com.asdarr.bricc.Date
 date	src/main/kotlin/com/asdarr/bricc/ReservationRepository.kt	/^    val date: String,$/;"	C	class:com.asdarr.bricc.Reservation
 date	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    val date: Date,$/;"	C	class:com.asdarr.bricc.TimesPostBody
-date	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    val date: String$/;"	C	class:com.asdarr.bricc.Date
 date	src/main/resources/static/booking.js	/^                        date: booker.calState.selectedDate$/;"	p	variable:anonymousFunction5d2eede52000.submittedDate
 date	src/main/resources/static/booking.js	/^                        date: submittedDate,$/;"	p	variable:anonymousFunction5d2eede52000.submitData
 date	src/main/resources/static/booking.js	/^            date: '2022-7-16',$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50205
@@ -342,13 +354,12 @@ fakeBookableApiCall	src/main/resources/static/booking.js	/^    function fakeBook
 fakeTimesApiCall	build/resources/main/static/booking.js	/^    function fakeTimesApiCall() {$/;"	f	function:anonymousFunction1394fbcd0100
 fakeTimesApiCall	src/main/resources/static/booking.js	/^    function fakeTimesApiCall() {$/;"	f	function:anonymousFunction5d2eede50100
 findJavaFromJavaHome	gradlew.bat	/^:findJavaFromJavaHome$/;"	l
+getAvailableStartTimes	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^    fun getAvailableStartTimes(input: TimesPostBody): List<TimeWithAvailability> {$/;"	m	class:com.asdarr.bricc.TimeService
 getCalendarTiles	build/resources/main/static/booking.js	/^    function getCalendarTiles() {$/;"	f	function:anonymousFunction1394fbcd0100
 getCalendarTiles	src/main/resources/static/booking.js	/^    function getCalendarTiles() {$/;"	f	function:anonymousFunction5d2eede50100
 gradle.version	.gradle/buildOutputCleanup/cache.properties	/^gradle.version=7.5$/;"	k
 h1	build/resources/main/static/common.css	/^h1 {$/;"	s
 h1	src/main/resources/static/common.css	/^h1 {$/;"	s
-hour	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val hour: Int,$/;"	C	class:com.asdarr.bricc.Time
-hour	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    val hour: Int,$/;"	C	class:com.asdarr.bricc.TimeWithAvailability
 hours	build/resources/main/static/booking.js	/^                hours: 10,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.anonymousObject1394fbcd0f05
 hours	build/resources/main/static/booking.js	/^                hours: 12,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.anonymousObject1394fbcd1005
 hours	build/resources/main/static/booking.js	/^                hours: 13,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.anonymousObject1394fbcd1105
@@ -372,6 +383,8 @@ hours	build/resources/main/static/booking.js	/^                hours: 9,$/;"	p	v
 hours	build/resources/main/static/booking.js	/^                hours: 9,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.anonymousObject1394fbcd0e05
 hours	build/resources/main/static/booking.js	/^            hours: 16,$/;"	p	property:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.closingTime
 hours	build/resources/main/static/booking.js	/^            hours: 5,$/;"	p	property:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.openingTime
+hours	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val hours: Int,$/;"	C	class:com.asdarr.bricc.Time
+hours	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^    val hours: Int,$/;"	C	class:com.asdarr.bricc.TimeWithAvailability
 hours	src/main/resources/static/booking.js	/^                hours: 10,$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.anonymousObject5d2eede50f05
 hours	src/main/resources/static/booking.js	/^                hours: 12,$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.anonymousObject5d2eede51005
 hours	src/main/resources/static/booking.js	/^                hours: 13,$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.anonymousObject5d2eede51105
@@ -416,8 +429,8 @@ initSlotPicker	build/resources/main/static/booking.js	/^        this.initSlotPic
 initSlotPicker	src/main/resources/static/booking.js	/^        this.initSlotPicker = function() {$/;"	m	class:anonymousFunction5d2eede50100.Booker
 initTimePicker	build/resources/main/static/booking.js	/^        this.initTimePicker = function() {$/;"	m	class:anonymousFunction1394fbcd0100.Booker
 initTimePicker	src/main/resources/static/booking.js	/^        this.initTimePicker = function() {$/;"	m	class:anonymousFunction5d2eede50100.Booker
-initialInfo	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    fun initialInfo(): BriccConfig {$/;"	m	package:com.asdarr.bricc
-isAvailable	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    val isAvailable: Boolean$/;"	C	class:com.asdarr.bricc.TimeWithAvailability
+initialInfo	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    fun initialInfo(): BriccConfig {$/;"	m	class:com.asdarr.bricc.RestController
+isAvailable	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^    val isAvailable: Boolean$/;"	C	class:com.asdarr.bricc.TimeWithAvailability
 isValidTime	build/resources/main/static/booking.js	/^    function isValidTime(time) {$/;"	f	function:anonymousFunction1394fbcd0100
 isValidTime	src/main/resources/static/booking.js	/^    function isValidTime(time) {$/;"	f	function:anonymousFunction5d2eede50100
 lane	build/resources/main/static/booking.js	/^                        lane: booker.laneState.num$/;"	p	variable:anonymousFunction1394fbcd2000.submitData
@@ -451,6 +464,7 @@ main	src/main/kotlin/com/asdarr/bricc/BriccApplication.kt	/^fun main(args: Array
 mainEnd	gradlew.bat	/^:mainEnd$/;"	l
 maxBookingLength	build/resources/main/static/booking.js	/^        maxBookingLength: 5,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
 maxBookingLength	src/main/resources/static/booking.js	/^        maxBookingLength: 5,$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA
+minStartTimeInterval	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val minStartTimeInterval: Int,$/;"	C	class:com.asdarr.bricc.BriccConfig
 minTimeInterval	build/resources/main/static/booking.js	/^        minTimeInterval: 30,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
 minTimeInterval	src/main/resources/static/booking.js	/^        minTimeInterval: 30,$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA
 minutes	build/resources/main/static/booking.js	/^                minutes: 0$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.anonymousObject1394fbcd0c05
@@ -477,7 +491,7 @@ minutes	build/resources/main/static/booking.js	/^                minutes: 30$/;"
 minutes	build/resources/main/static/booking.js	/^            minutes: 30$/;"	p	property:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.closingTime
 minutes	build/resources/main/static/booking.js	/^            minutes: 30$/;"	p	property:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.openingTime
 minutes	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val minutes: Int$/;"	C	class:com.asdarr.bricc.Time
-minutes	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    val minutes: Int,$/;"	C	class:com.asdarr.bricc.TimeWithAvailability
+minutes	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^    val minutes: Int,$/;"	C	class:com.asdarr.bricc.TimeWithAvailability
 minutes	src/main/resources/static/booking.js	/^                minutes: 0$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.anonymousObject5d2eede50c05
 minutes	src/main/resources/static/booking.js	/^                minutes: 0$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.anonymousObject5d2eede50d05
 minutes	src/main/resources/static/booking.js	/^                minutes: 0$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.anonymousObject5d2eede50f05
@@ -502,14 +516,13 @@ minutes	src/main/resources/static/booking.js	/^                minutes: 30$/;"	p
 minutes	src/main/resources/static/booking.js	/^            minutes: 30$/;"	p	property:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.closingTime
 minutes	src/main/resources/static/booking.js	/^            minutes: 30$/;"	p	property:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.openingTime
 month	build/resources/main/static/booking.js	/^                        month: booker.calState.selectedMonth,$/;"	p	variable:anonymousFunction1394fbcd2000.submittedDate
-month	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    val month: String,$/;"	C	class:com.asdarr.bricc.Date
+month	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val month: String,$/;"	C	class:com.asdarr.bricc.Date
 month	src/main/resources/static/booking.js	/^                        month: booker.calState.selectedMonth,$/;"	p	variable:anonymousFunction5d2eede52000.submittedDate
 name	build/resources/main/static/booking.js	/^                        name: $('nameInput').value$/;"	p	variable:anonymousFunction1394fbcd2200.cInfo
 name	src/main/resources/static/booking.js	/^                        name: $('nameInput').value$/;"	p	variable:anonymousFunction5d2eede52200.cInfo
 navBar	build/resources/main/static/booking.html	/^            <div id="navBar"><\/div>$/;"	I
 navBar	build/resources/main/static/index.html	/^            <div id="navBar">$/;"	I
-navBar	src/main/resources/static/booking.html	/^            <div id="navBar"><\/div>$/;"	I
-navBar	src/main/resources/static/index.html	/^            <div id="navBar">$/;"	I
+navBar	src/main/resources/static/booking.html	/^                <div id="navBar">$/;"	I
 navBarInput	build/resources/main/static/common.js	/^    const navBarInput = {$/;"	v	function:anonymousFunctiond873e92d0100
 navBarInput	src/main/resources/static/common.js	/^    const navBarInput = {$/;"	v	function:anonymousFunction4f0bf8450100
 num	build/resources/main/static/booking.js	/^                num: DEFAULT_NUM_LANES$/;"	p	property:anonymousObject1394fbcd2505.laneState
@@ -528,8 +541,9 @@ numHours	build/resources/main/static/booking.js	/^            numHours: response
 numHours	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val numHours: Int$/;"	C	class:com.asdarr.bricc.SpecialTime
 numHours	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val numHours: Int,$/;"	C	class:com.asdarr.bricc.BriccConfig
 numHours	src/main/kotlin/com/asdarr/bricc/ReservationRepository.kt	/^    val numHours: Int,$/;"	C	class:com.asdarr.bricc.Reservation
-numHours	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^        var numHours = config.numHours$/;"	v	package:com.asdarr.bricc
 numHours	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    val numHours: Int$/;"	C	class:com.asdarr.bricc.TimesPostBody
+numHours	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        var numHours = config.numHours$/;"	v	method:com.asdarr.bricc.TimeService.getAvailableStartTimes
+numHours	src/main/resources/static/booking.js	/^                numHours: 1 \/\/ TODO$/;"	p	property:anonymousObject5d2eede52505.timeState
 numHours	src/main/resources/static/booking.js	/^            numHours: 1$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50205
 numHours	src/main/resources/static/booking.js	/^            numHours: 1$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50305
 numHours	src/main/resources/static/booking.js	/^            numHours: 1$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50405
@@ -572,6 +586,8 @@ renderSlotPicker	build/resources/main/static/booking.js	/^    function renderSlo
 renderSlotPicker	src/main/resources/static/booking.js	/^    function renderSlotPicker() {$/;"	f	function:anonymousFunction5d2eede50100
 renderTimePicker	build/resources/main/static/booking.js	/^    function renderTimePicker() {$/;"	f	function:anonymousFunction1394fbcd0100
 renderTimePicker	src/main/resources/static/booking.js	/^    function renderTimePicker() {$/;"	f	function:anonymousFunction5d2eede50100
+ret	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        val ret: MutableList<TimeWithAvailability> = mutableListOf()$/;"	C	method:com.asdarr.bricc.TimeService.getAvailableStartTimes
+s	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        config.specialTimings.forEach { s ->$/;"	m	method:com.asdarr.bricc.TimeService.getAvailableStartTimes.<lambda>
 selected	build/resources/main/static/booking.js	/^                selected: new Set()$/;"	p	property:booker.bookState
 selected	src/main/resources/static/booking.js	/^                selected: new Set()$/;"	p	property:booker.bookState
 selectedDate	build/resources/main/static/booking.js	/^                selectedDate: todaysDate.getDate(),$/;"	p	property:anonymousObject1394fbcd2505.calState
@@ -590,8 +606,8 @@ slotKeyGen	build/resources/main/static/booking.js	/^    function slotKeyGen(s) {
 slotKeyGen	src/main/resources/static/booking.js	/^    function slotKeyGen(s) {$/;"	f	function:anonymousFunction5d2eede50100
 slots	build/resources/main/static/booking.js	/^                slots: response,$/;"	p	property:booker.bookState
 slots	src/main/resources/static/booking.js	/^                slots: response,$/;"	p	property:booker.bookState
-specialTimings	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val specialTimings: List<SpecialTime>,$/;"	C	class:com.asdarr.bricc.BriccConfig
-start	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^        var start = config.startTime$/;"	v	package:com.asdarr.bricc
+specialTimings	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val specialTimings: List<SpecialTime>$/;"	C	class:com.asdarr.bricc.BriccConfig
+start	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        var start = timeToMinutes(config.startTime)$/;"	v	method:com.asdarr.bricc.TimeService.getAvailableStartTimes
 startTime	build/resources/main/static/booking.js	/^            startTime: {$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0205
 startTime	build/resources/main/static/booking.js	/^            startTime: {$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0305
 startTime	build/resources/main/static/booking.js	/^            startTime: {$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0405
@@ -615,21 +631,21 @@ startTime	src/main/resources/static/booking.js	/^            startTime: {$/;"	p	
 startTime	src/main/resources/static/booking.js	/^            startTime: {$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50905
 startTime	src/main/resources/static/booking.js	/^            startTime: {$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50a05
 startTime	src/main/resources/static/booking.js	/^            startTime: {$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50b05
-startTimes	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    fun startTimes(@RequestBody body: TimesPostBody): List<TimeWithAvailability> {$/;"	m	package:com.asdarr.bricc
 subject	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val subject: String,$/;"	C	class:com.asdarr.bricc.Announcement
 submitData	build/resources/main/static/booking.js	/^                    let submitData = {$/;"	v	function:anonymousFunction1394fbcd2000
 submitData	src/main/resources/static/booking.js	/^                    let submitData = {$/;"	v	function:anonymousFunction5d2eede52000
 submittedDate	build/resources/main/static/booking.js	/^                    let submittedDate = {$/;"	v	function:anonymousFunction1394fbcd2000
 submittedDate	src/main/resources/static/booking.js	/^                    let submittedDate = {$/;"	v	function:anonymousFunction5d2eede52000
-t	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^        config.specialTimings.forEach { t ->$/;"	m	method:com.asdarr.bricc.<lambda>
 text	build/resources/main/static/common.js	/^                text: 'Home',$/;"	p	variable:anonymousFunctiond873e92d0100.navBarInput.anonymousObjectd873e92d0205
 text	build/resources/main/static/common.js	/^                text: 'Make a Booking',$/;"	p	variable:anonymousFunctiond873e92d0100.navBarInput.anonymousObjectd873e92d0305
 text	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val text: String$/;"	C	class:com.asdarr.bricc.Announcement
 text	src/main/resources/static/common.js	/^                text: 'Home',$/;"	p	variable:anonymousFunction4f0bf8450100.navBarInput.anonymousObject4f0bf8450205
 text	src/main/resources/static/common.js	/^                text: 'Make a Booking',$/;"	p	variable:anonymousFunction4f0bf8450100.navBarInput.anonymousObject4f0bf8450305
+timeService	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    private val timeService: TimeService$/;"	C	class:com.asdarr.bricc.RestController
 timeState	build/resources/main/static/booking.js	/^            timeState: null,$/;"	p	variable:anonymousObject1394fbcd2505
-timeState	src/main/resources/static/booking.js	/^            timeState: null,$/;"	p	variable:anonymousObject5d2eede52505
-todayString	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^        val todayString = body.date.let { "${it.year}-${it.month}-${it.date}" }$/;"	C	package:com.asdarr.bricc
+timeState	src/main/resources/static/booking.js	/^            timeState: {$/;"	p	variable:anonymousObject5d2eede52505
+timeToMinutes	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^fun timeToMinutes(time: Time): Int = (time.hours * 60) + time.minutes$/;"	m	package:com.asdarr.bricc
+todayString	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        val todayString = input.date.let { "${it.year}-${it.month}-${it.date}" }$/;"	C	method:com.asdarr.bricc.TimeService.getAvailableStartTimes
 totalMinutes	build/resources/main/static/booking.js	/^    function totalMinutes(time) {$/;"	f	function:anonymousFunction1394fbcd0100
 totalMinutes	src/main/resources/static/booking.js	/^    function totalMinutes(time) {$/;"	f	function:anonymousFunction5d2eede50100
 type	build/resources/main/static/booking.js	/^            type: 'Indoor',$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0205
@@ -656,7 +672,7 @@ updateCalSelectedDateDisplay	build/resources/main/static/booking.js	/^    functi
 updateCalSelectedDateDisplay	src/main/resources/static/booking.js	/^    function updateCalSelectedDateDisplay() {$/;"	f	function:anonymousFunction5d2eede50100
 warn	gradlew	/^warn () {$/;"	f
 year	build/resources/main/static/booking.js	/^                        year: booker.calState.selectedYear,$/;"	p	variable:anonymousFunction1394fbcd2000.submittedDate
-year	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    val year: String,$/;"	C	class:com.asdarr.bricc.Date
+year	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val year: String,$/;"	C	class:com.asdarr.bricc.Date
 year	src/main/resources/static/booking.js	/^                        year: booker.calState.selectedYear,$/;"	p	variable:anonymousFunction5d2eede52000.submittedDate
 zipStoreBase	gradle/wrapper/gradle-wrapper.properties	/^zipStoreBase=GRADLE_USER_HOME$/;"	k
 zipStorePath	gradle/wrapper/gradle-wrapper.properties	/^zipStorePath=wrapper\/dists$/;"	k

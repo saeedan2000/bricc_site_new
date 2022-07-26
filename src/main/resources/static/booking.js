@@ -393,9 +393,13 @@
             }
         });
 
+        let label = document.createElement('p');
+        label.textContent = 'Lanes: ';
+
         // Create container to hold these elements
-        let lanePickerContainer = createElem('div', '#laneNumPickerContainer');
-        lanePickerContainer.append(prevLaneButton, laneNumDisplay, nextLaneButton);
+        let lanePickerContainer = createElem('div', '.numPickerContainer');
+        lanePickerContainer.append(label, prevLaneButton, laneNumDisplay, nextLaneButton);
+
         return lanePickerContainer;
     }
 
@@ -538,9 +542,12 @@
             }
         });
 
+        let label = document.createElement('p');
+        label.textContent = 'Hours: ';
+
         // Create container to hold these elements
-        let numHoursPickerContainer = createElem('div', '#laneNumPickerContainer');
-        numHoursPickerContainer.append(prevHourButton, numHoursDisplay, nextHourButton);
+        let numHoursPickerContainer = createElem('div', '.numPickerContainer');
+        numHoursPickerContainer.append(label, prevHourButton, numHoursDisplay, nextHourButton);
         return numHoursPickerContainer;
     }
 
@@ -708,9 +715,14 @@
             renderCalendar();
 
             // Add lane picker label, and lane picker
-            addLabel('How many lanes would you like to book?', dateLanePickerContainer);
+            addLabel('How many lanes would you like to book and for how long?', dateLanePickerContainer);
             dateLanePickerContainer.append(createLanePicker());
             renderLanePicker(); // render as above
+
+
+            // TODO remove this if not good, temp
+            dateLanePickerContainer.append(createNumHoursPicker());
+            renderNumHoursPicker(); //render as above
 
             // Add the button to submit date and lane choices and move to the next stage of booking.
             dateLanePickerContainer.append(
@@ -731,11 +743,6 @@
 
             // render based on timeState which should already be set.
             renderTimePicker();
-
-            // Add booking length picker along with a label.
-            addLabel('How many hours would you like to book?', timePickerAndSubmitContainer);
-            timePickerAndSubmitContainer.append(createNumHoursPicker());
-            renderNumHoursPicker(); //render as above
 
             // Add the button to submit the date, lane, and time choices and move on.
             timePickerAndSubmitContainer.append(
@@ -849,7 +856,9 @@
             laneState: {
                 num: DEFAULT_NUM_LANES
             },
-            timeState: null,
+            timeState: {
+                numHours: 1 // TODO
+            },
             bookState: null,
             overallState: State.DATE_LANE_SCREEN
         });

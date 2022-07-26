@@ -4,15 +4,22 @@ bricc:
             hours: 7
             minutes: 30
         numHours: 16
+        minStartTimeInterval: 30
 
         specialTimings:
-            - date: 10-20-2022
+            - date:
+                  year: 2022
+                  month: 7
+                  date: 26
               startTime:
                   hours: 9
                   minutes: 0
               numHours: 5
 
-            - date: 10-21-2022
+            - date:
+                  year: 2022
+                  month: 7
+                  date: 29
               startTime:
                   hours: 10
                   minutes: 0
@@ -20,9 +27,6 @@ bricc:
 
         numLanes: 5
 
-        announcements:
-            - subject: Test Announcement
-              text: This announcement is a test announcement. The purpose of it is to test the announcement functionality
 spring:
     datasource:
         url: "jdbc:mysql://localhost:3306/bricc_schema"

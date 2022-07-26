@@ -8,8 +8,14 @@ data class Time(
     val minutes: Int
 )
 
+data class Date(
+    val year: String,
+    val month: String,
+    val date: String
+)
+
 data class SpecialTime(
-    val date: String,
+    val date: Date,
     val startTime: Time,
     val numHours: Int
 )
@@ -24,7 +30,7 @@ data class Announcement(
 data class BriccConfig(
     val startTime: Time,
     val numHours: Int,
+    val minStartTimeInterval: Int,
     val numLanes: Int,
-    val specialTimings: List<SpecialTime>,
-    val announcements: List<Announcement>
+    val specialTimings: List<SpecialTime>
 )
