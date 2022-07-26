@@ -9,29 +9,34 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	/ac824e67/
+#announcements	build/resources/main/static/common.css	/^#announcements {$/;"	i
 #announcements	src/main/resources/static/common.css	/^#announcements {$/;"	i
+#banner	build/resources/main/static/common.css	/^#banner {$/;"	i
 #banner	src/main/resources/static/common.css	/^#banner {$/;"	i
+#banner > p	build/resources/main/static/common.css	/^#banner > p {$/;"	s
 #banner > p	src/main/resources/static/common.css	/^#banner > p {$/;"	s
+#banner p	build/resources/main/static/common.css	/^#banner p {$/;"	s
 #banner p	src/main/resources/static/common.css	/^#banner p {$/;"	s
+#bookingContainer h2	build/resources/main/static/booking.css	/^#bookingContainer h2 {$/;"	s
 #bookingContainer h2	src/main/resources/static/booking.css	/^#bookingContainer h2 {$/;"	s
 #calGrid	build/resources/main/static/booking.css	/^#calGrid {$/;"	i
-#calGrid	build/resources/main/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
+#calGrid	build/resources/main/static/booking.css	/^#calGrid, #timePickerContainer, .bookerButton {$/;"	i
 #calGrid	src/main/resources/static/booking.css	/^#calGrid {$/;"	i
 #calGrid	src/main/resources/static/booking.css	/^#calGrid, #timePickerContainer, .bookerButton {$/;"	i
-#calGrid > div	build/resources/main/static/booking.css	/^#calGrid > div, #laneNumPickerContainer > div, $/;"	s
+#calGrid > div	build/resources/main/static/booking.css	/^#calGrid > div, .numPickerContainer > div, #timePickerScroller > div,$/;"	s
 #calGrid > div	src/main/resources/static/booking.css	/^#calGrid > div, .numPickerContainer > div, #timePickerScroller > div,$/;"	s
 #calHeader > div	build/resources/main/static/booking.css	/^#calHeader > div {$/;"	s
 #calHeader > div	src/main/resources/static/booking.css	/^#calHeader > div {$/;"	s
+#contactInfo	build/resources/main/static/common.css	/^#contactInfo {$/;"	i
 #contactInfo	src/main/resources/static/common.css	/^#contactInfo {$/;"	i
 #contentContainer	build/resources/main/static/common.css	/^#contentContainer {$/;"	i
 #contentContainer	src/main/resources/static/common.css	/^#contentContainer {$/;"	i
+#headerWrapper	build/resources/main/static/common.css	/^#headerWrapper {$/;"	i
 #headerWrapper	src/main/resources/static/common.css	/^#headerWrapper {$/;"	i
+#headerWrapper > h1	build/resources/main/static/common.css	/^#headerWrapper > h1 {$/;"	s
 #headerWrapper > h1	src/main/resources/static/common.css	/^#headerWrapper > h1 {$/;"	s
+#headerWrapper > img	build/resources/main/static/common.css	/^#headerWrapper > img {$/;"	s
 #headerWrapper > img	src/main/resources/static/common.css	/^#headerWrapper > img {$/;"	s
-#laneNumDisplay	build/resources/main/static/booking.css	/^#laneNumDisplay, #numHoursDisplay{$/;"	i
-#laneNumPickerContainer	build/resources/main/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
-#laneNumPickerContainer	build/resources/main/static/booking.css	/^#laneNumPickerContainer, #numHoursPickerContainer {$/;"	i
-#laneNumPickerContainer > div	build/resources/main/static/booking.css	/^#calGrid > div, #laneNumPickerContainer > div, $/;"	s
 #monthYearDisplay	build/resources/main/static/booking.css	/^#monthYearDisplay {$/;"	i
 #monthYearDisplay	src/main/resources/static/booking.css	/^#monthYearDisplay {$/;"	i
 #navBar	build/resources/main/static/common.css	/^#navBar {$/;"	i
@@ -40,29 +45,25 @@
 #navBar > a	src/main/resources/static/common.css	/^#navBar > a {$/;"	s
 #navBar > a:hover	build/resources/main/static/common.css	/^#navBar > a:hover {$/;"	s
 #navBar > a:hover	src/main/resources/static/common.css	/^#navBar > a:hover {$/;"	s
-#numHoursDisplay	build/resources/main/static/booking.css	/^#laneNumDisplay, #numHoursDisplay{$/;"	i
-#numHoursPickerContainer	build/resources/main/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
-#numHoursPickerContainer	build/resources/main/static/booking.css	/^#laneNumPickerContainer, #numHoursPickerContainer {$/;"	i
-#numHoursPickerContainer > div	build/resources/main/static/booking.css	/^#numHoursPickerContainer > div, #timePickerScroller > div,$/;"	s
 #selectedDateDisplay	build/resources/main/static/booking.css	/^#selectedDateDisplay{$/;"	i
 #selectedDateDisplay	src/main/resources/static/booking.css	/^#selectedDateDisplay{$/;"	i
 #slotBoundary	build/resources/main/static/booking.css	/^#slotBoundary {$/;"	i
 #slotBoundary	src/main/resources/static/booking.css	/^#slotBoundary {$/;"	i
 #slotPickerContainer	build/resources/main/static/booking.css	/^#slotPickerContainer {$/;"	i
 #slotPickerContainer	src/main/resources/static/booking.css	/^#slotPickerContainer {$/;"	i
-#timePickerContainer	build/resources/main/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	i
+#timePickerContainer	build/resources/main/static/booking.css	/^#calGrid, #timePickerContainer, .bookerButton {$/;"	i
 #timePickerContainer	build/resources/main/static/booking.css	/^#timePickerContainer {$/;"	i
 #timePickerContainer	src/main/resources/static/booking.css	/^#calGrid, #timePickerContainer, .bookerButton {$/;"	i
 #timePickerContainer	src/main/resources/static/booking.css	/^#timePickerContainer {$/;"	i
 #timePickerScroller	build/resources/main/static/booking.css	/^#timePickerScroller {$/;"	i
 #timePickerScroller	src/main/resources/static/booking.css	/^#timePickerScroller {$/;"	i
-#timePickerScroller > div	build/resources/main/static/booking.css	/^#numHoursPickerContainer > div, #timePickerScroller > div,$/;"	s
+#timePickerScroller > div	build/resources/main/static/booking.css	/^#calGrid > div, .numPickerContainer > div, #timePickerScroller > div,$/;"	s
 #timePickerScroller > div	src/main/resources/static/booking.css	/^#calGrid > div, .numPickerContainer > div, #timePickerScroller > div,$/;"	s
 $	build/resources/main/static/booking.js	/^    function $(id){$/;"	f	function:anonymousFunction1394fbcd0100
 $	build/resources/main/static/common.js	/^    function $(id){$/;"	f	function:anonymousFunctiond873e92d0100
 $	src/main/resources/static/booking.js	/^    function $(id){$/;"	f	function:anonymousFunction5d2eede50100
 $	src/main/resources/static/common.js	/^    function $(id){$/;"	f	function:anonymousFunction4f0bf8450100
-.bookerButton	build/resources/main/static/booking.css	/^#calGrid, #laneNumPickerContainer, #numHoursPickerContainer, #timePickerContainer, .bookerButton/;"	c
+.bookerButton	build/resources/main/static/booking.css	/^#calGrid, #timePickerContainer, .bookerButton {$/;"	c
 .bookerButton	build/resources/main/static/booking.css	/^.bookerButton {$/;"	c
 .bookerButton	src/main/resources/static/booking.css	/^#calGrid, #timePickerContainer, .bookerButton {$/;"	c
 .bookerButton	src/main/resources/static/booking.css	/^.bookerButton {$/;"	c
@@ -76,10 +77,15 @@ $	src/main/resources/static/common.js	/^    function $(id){$/;"	f	function:anony
 .incDecButton	src/main/resources/static/booking.css	/^.incDecButton {$/;"	c
 .indoorSlotTile	build/resources/main/static/booking.css	/^.indoorSlotTile {$/;"	c
 .indoorSlotTile	src/main/resources/static/booking.css	/^.indoorSlotTile {$/;"	c
+.numDisplay	build/resources/main/static/booking.css	/^.numDisplay {$/;"	c
 .numDisplay	src/main/resources/static/booking.css	/^.numDisplay {$/;"	c
+.numPickerContainer	build/resources/main/static/booking.css	/^.numPickerContainer  {$/;"	c
 .numPickerContainer	src/main/resources/static/booking.css	/^.numPickerContainer  {$/;"	c
+.numPickerContainer > div	build/resources/main/static/booking.css	/^#calGrid > div, .numPickerContainer > div, #timePickerScroller > div,$/;"	s
+.numPickerContainer > div	build/resources/main/static/booking.css	/^.numPickerContainer > div {$/;"	s
 .numPickerContainer > div	src/main/resources/static/booking.css	/^#calGrid > div, .numPickerContainer > div, #timePickerScroller > div,$/;"	s
 .numPickerContainer > div	src/main/resources/static/booking.css	/^.numPickerContainer > div {$/;"	s
+.numPickerContainer > p	build/resources/main/static/booking.css	/^.numPickerContainer > p {$/;"	s
 .numPickerContainer > p	src/main/resources/static/booking.css	/^.numPickerContainer > p {$/;"	s
 .selectedSlotTile	build/resources/main/static/booking.css	/^.selectedSlotTile {$/;"	c
 .selectedSlotTile	src/main/resources/static/booking.css	/^.selectedSlotTile {$/;"	c
@@ -99,7 +105,7 @@ $	src/main/resources/static/common.js	/^    function $(id){$/;"	f	function:anony
 .timeTile	src/main/resources/static/booking.css	/^.timeTile {$/;"	c
 2CNQmT74HJZ6n24yuRND2eWTML3	.idea/workspace.xml	/^  <component name="ProjectId" id="2CNQmT74HJZ6n24yuRND2eWTML3" \/>$/;"	i
 3ad69a69-32d7-4d0c-a3a2-ea2e05521620	.idea/workspace.xml	/^      <changelist id="3ad69a69-32d7-4d0c-a3a2-ea2e05521620" name="Changes" comment="" \/>$/;"	i
-3ad69a69-32d7-4d0c-a3a2-ea2e05521620	.idea/workspace.xml	/^    <list default="true" id="3ad69a69-32d7-4d0c-a3a2-ea2e05521620" name="Changes" comment="" \/>$/;"	i
+3ad69a69-32d7-4d0c-a3a2-ea2e05521620	.idea/workspace.xml	/^    <list default="true" id="3ad69a69-32d7-4d0c-a3a2-ea2e05521620" name="Changes" comment="">$/;"	i
 <lambda>	build.gradle.kts	/^	kotlinOptions {$/;"	m	method:<lambda>
 <lambda>	build.gradle.kts	/^dependencies {$/;"	m
 <lambda>	build.gradle.kts	/^plugins {$/;"	m
@@ -118,10 +124,10 @@ BOOKABLE_SCREEN	src/main/resources/static/booking.js	/^        BOOKABLE_SCREEN: 
 BRICC Booking Page	build/resources/main/static/booking.html	/^        <title>BRICC Booking Page<\/title>$/;"	j
 BRICC Booking Page	src/main/resources/static/booking.html	/^        <title>BRICC Booking Page<\/title>$/;"	j
 BRICC Home Page	build/resources/main/static/booking.html	/^            <h1>BRICC Home Page<\/h1>$/;"	h
-BRICC Home Page	build/resources/main/static/index.html	/^            <h1>BRICC Home Page<\/h1>$/;"	h
 BRICC Home Page	build/resources/main/static/index.html	/^        <title>BRICC Home Page<\/title>$/;"	j
 BRICC Home Page	src/main/resources/static/booking.html	/^            <h1>BRICC Home Page<\/h1>$/;"	h
 BRICC Home Page	src/main/resources/static/index.html	/^        <title>BRICC Home Page<\/title>$/;"	j
+Bellevue Redmond Indoor Cricket Center	build/resources/main/static/index.html	/^                    <h1>Bellevue Redmond Indoor Cricket Center<\/h1>$/;"	h
 Bellevue Redmond Indoor Cricket Center	src/main/resources/static/index.html	/^                    <h1>Bellevue Redmond Indoor Cricket Center<\/h1>$/;"	h
 Booker	build/resources/main/static/booking.js	/^    function Booker() {$/;"	c	function:anonymousFunction1394fbcd0100
 Booker	src/main/resources/static/booking.js	/^    function Booker() {$/;"	c	function:anonymousFunction5d2eede50100
@@ -157,6 +163,7 @@ State	build/resources/main/static/booking.js	/^    const State = {     \/\/ esse
 State	src/main/resources/static/booking.js	/^    const State = {     \/\/ essentially an enum$/;"	v	function:anonymousFunction5d2eede50100
 TIME_SUBMIT_SCREEN	build/resources/main/static/booking.js	/^        TIME_SUBMIT_SCREEN: 1,$/;"	p	variable:anonymousFunction1394fbcd0100.State
 TIME_SUBMIT_SCREEN	src/main/resources/static/booking.js	/^        TIME_SUBMIT_SCREEN: 1,$/;"	p	variable:anonymousFunction5d2eede50100.State
+Test Announcement	build/resources/main/static/index.html	/^                <h2>Test Announcement<\/h2>$/;"	i
 Test Announcement	src/main/resources/static/index.html	/^                <h2>Test Announcement<\/h2>$/;"	i
 Time	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^data class Time($/;"	c	package:com.asdarr.bricc
 TimeService	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^class TimeService($/;"	c	package:com.asdarr.bricc
@@ -164,24 +171,27 @@ TimeWithAvailability	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^data clas
 TimesPostBody	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^data class TimesPostBody($/;"	c	package:com.asdarr.bricc
 addLabel	build/resources/main/static/booking.js	/^    function addLabel(str, container) {$/;"	f	function:anonymousFunction1394fbcd0100
 addLabel	src/main/resources/static/booking.js	/^    function addLabel(str, container) {$/;"	f	function:anonymousFunction5d2eede50100
+ajaxGet	build/resources/main/static/booking.js	/^    function ajaxGet(input) {$/;"	f	function:anonymousFunction1394fbcd0100
 ajaxGet	src/main/resources/static/booking.js	/^    function ajaxGet(input) {$/;"	f	function:anonymousFunction5d2eede50100
+ajaxPost	build/resources/main/static/booking.js	/^    function ajaxPost() {$/;"	f	function:anonymousFunction1394fbcd0100
 ajaxPost	src/main/resources/static/booking.js	/^    function ajaxPost() {$/;"	f	function:anonymousFunction5d2eede50100
+announcements	build/resources/main/static/index.html	/^            <div id="announcements">$/;"	I
 announcements	src/main/resources/static/index.html	/^            <div id="announcements">$/;"	I
 anonymousFunction1394fbcd0100	build/resources/main/static/booking.js	/^(function() {$/;"	f
 anonymousFunction1394fbcd1700	build/resources/main/static/booking.js	/^        ['Sat', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sun'].forEach(function(elem) { $/;"	f
-anonymousFunction1394fbcd1800	build/resources/main/static/booking.js	/^        nextLaneButton.addEventListener('click', function() {$/;"	f
-anonymousFunction1394fbcd1900	build/resources/main/static/booking.js	/^        prevLaneButton.addEventListener('click', function() {$/;"	f
-anonymousFunction1394fbcd1a00	build/resources/main/static/booking.js	/^        nextHourButton.addEventListener('click', function() {$/;"	f
-anonymousFunction1394fbcd1b00	build/resources/main/static/booking.js	/^        prevHourButton.addEventListener('click', function() {$/;"	f
-anonymousFunction1394fbcd1c00	build/resources/main/static/booking.js	/^        booker.bookState.selected.forEach(function(s2) {$/;"	f
-anonymousFunction1394fbcd1d00	build/resources/main/static/booking.js	/^        booker.bookState.slots.forEach(function(s) {$/;"	f
-anonymousFunction1394fbcd1e00	build/resources/main/static/booking.js	/^        booker.bookState.selected.forEach(function(s) {$/;"	f
-anonymousFunction1394fbcd1f00	build/resources/main/static/booking.js	/^                createBookerButton('Next', function() {$/;"	f
-anonymousFunction1394fbcd2000	build/resources/main/static/booking.js	/^                createBookerButton('Next', function() {$/;"	f
-anonymousFunction1394fbcd2100	build/resources/main/static/booking.js	/^                createBookerButton('Go Back', function() {$/;"	f
-anonymousFunction1394fbcd2200	build/resources/main/static/booking.js	/^                createBookerButton('Pay', function() {$/;"	f
-anonymousFunction1394fbcd2300	build/resources/main/static/booking.js	/^                    booker.bookState.selected.forEach(function(s) {$/;"	f
-anonymousFunction1394fbcd2400	build/resources/main/static/booking.js	/^    window.addEventListener('load', function() {$/;"	f
+anonymousFunction1394fbcd1800	build/resources/main/static/booking.js	/^        booker.bookState.selected.forEach(function(s2) {$/;"	f
+anonymousFunction1394fbcd1900	build/resources/main/static/booking.js	/^        booker.bookState.slots.forEach(function(s) {$/;"	f
+anonymousFunction1394fbcd1a00	build/resources/main/static/booking.js	/^        booker.bookState.selected.forEach(function(s) {$/;"	f
+anonymousFunction1394fbcd1d00	build/resources/main/static/booking.js	/^                createBookerButton('Next', function() {$/;"	f
+anonymousFunction1394fbcd1e00	build/resources/main/static/booking.js	/^                createBookerButton('Next', function() {$/;"	f
+anonymousFunction1394fbcd1f00	build/resources/main/static/booking.js	/^                createBookerButton('Go Back', function() {$/;"	f
+anonymousFunction1394fbcd2000	build/resources/main/static/booking.js	/^                createBookerButton('Pay', function() {$/;"	f
+anonymousFunction1394fbcd2100	build/resources/main/static/booking.js	/^                    booker.bookState.selected.forEach(function(s) {$/;"	f
+anonymousFunction1394fbcd2300	build/resources/main/static/booking.js	/^           .then(function(responseText) {$/;"	f
+anonymousFunction1394fbcd2400	build/resources/main/static/booking.js	/^           .catch(function(error) {$/;"	f
+anonymousFunction1394fbcd2600	build/resources/main/static/booking.js	/^           .then(function(responseText) {$/;"	f
+anonymousFunction1394fbcd2700	build/resources/main/static/booking.js	/^           .catch(function(error) {$/;"	f
+anonymousFunction1394fbcd2900	build/resources/main/static/booking.js	/^    window.addEventListener('load', function() {$/;"	f
 anonymousFunction4f0bf8450100	src/main/resources/static/common.js	/^(function() {$/;"	f
 anonymousFunction4f0bf8450400	src/main/resources/static/common.js	/^            this.options.links.forEach(function(link) {$/;"	f
 anonymousFunction4f0bf8450500	src/main/resources/static/common.js	/^    window.addEventListener('load', function() {$/;"	f
@@ -224,7 +234,12 @@ anonymousObject1394fbcd1305	build/resources/main/static/booking.js	/^           
 anonymousObject1394fbcd1405	build/resources/main/static/booking.js	/^            {$/;"	v	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
 anonymousObject1394fbcd1505	build/resources/main/static/booking.js	/^            {$/;"	v	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
 anonymousObject1394fbcd1605	build/resources/main/static/booking.js	/^            {$/;"	v	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
-anonymousObject1394fbcd2505	build/resources/main/static/booking.js	/^        booker.setState({$/;"	v
+anonymousObject1394fbcd1b05	build/resources/main/static/booking.js	/^            dateLanePickerContainer.append(createNumPicker({  \/\/ lanepicker$/;"	v
+anonymousObject1394fbcd1c05	build/resources/main/static/booking.js	/^            dateLanePickerContainer.append(createNumPicker({ \/\/ num hours picker$/;"	v
+anonymousObject1394fbcd2205	build/resources/main/static/booking.js	/^        fetch(input.url.href, {mode: 'no-cors'})$/;"	v	function:anonymousFunction1394fbcd0100.ajaxGet
+anonymousObject1394fbcd2505	build/resources/main/static/booking.js	/^        fetch(input.url.href, {method: "POST", body: input.data})$/;"	v	function:anonymousFunction1394fbcd0100.ajaxPost
+anonymousObject1394fbcd2805	build/resources/main/static/booking.js	/^        booker.setState({$/;"	v
+anonymousObject1394fbcd2a05	build/resources/main/static/booking.js	/^        ajaxGet({$/;"	v	function:anonymousFunction1394fbcd2900
 anonymousObject4f0bf8450205	src/main/resources/static/common.js	/^            {$/;"	v	variable:anonymousFunction4f0bf8450100.navBarInput
 anonymousObject4f0bf8450305	src/main/resources/static/common.js	/^            {$/;"	v	variable:anonymousFunction4f0bf8450100.navBarInput
 anonymousObject5d2eede50205	src/main/resources/static/booking.js	/^        {$/;"	v	function:anonymousFunction5d2eede50100
@@ -259,11 +274,13 @@ anonymousObjectd873e92d0305	build/resources/main/static/common.js	/^            
 areEqual	build/resources/main/static/booking.js	/^    function areEqual(t1, t2) {$/;"	f	function:anonymousFunction1394fbcd0100
 areEqual	src/main/resources/static/booking.js	/^    function areEqual(t1, t2) {$/;"	f	function:anonymousFunction5d2eede50100
 availableStartTimes	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    fun availableStartTimes(@RequestBody body: TimesPostBody): List<TimeWithAvailability> {$/;"	m	class:com.asdarr.bricc.RestController
+banner	build/resources/main/static/index.html	/^            <div id="banner">$/;"	I
 banner	src/main/resources/static/index.html	/^            <div id="banner">$/;"	I
+body	build/resources/main/static/booking.js	/^        fetch(input.url.href, {method: "POST", body: input.data})$/;"	p	variable:anonymousFunction1394fbcd0100.ajaxPost.anonymousObject1394fbcd2505
 body	build/resources/main/static/common.css	/^body {$/;"	s
 body	src/main/resources/static/booking.js	/^        fetch(input.url.href, {method: "POST", body: input.data})$/;"	p	variable:anonymousFunction5d2eede50100.ajaxPost.anonymousObject5d2eede52505
 body	src/main/resources/static/common.css	/^body {$/;"	s
-bookState	build/resources/main/static/booking.js	/^            bookState: null,$/;"	p	variable:anonymousObject1394fbcd2505
+bookState	build/resources/main/static/booking.js	/^            bookState: null,$/;"	p	variable:anonymousObject1394fbcd2805
 bookState	src/main/resources/static/booking.js	/^            bookState: null,$/;"	p	variable:anonymousObject5d2eede52805
 bookableTimes	build/resources/main/static/booking.js	/^        bookableTimes: [$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
 bookableTimes	src/main/resources/static/booking.js	/^        bookableTimes: [$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA
@@ -272,12 +289,14 @@ booker.bookState	src/main/resources/static/booking.js	/^            booker.bookS
 booker.timeState	build/resources/main/static/booking.js	/^        booker.timeState = {$/;"	p
 booker.timeState	src/main/resources/static/booking.js	/^        booker.timeState = {$/;"	p
 bookingContainer	build/resources/main/static/booking.html	/^            <div id="bookingContainer"><\/div> $/;"	I
+bookingContainer	build/resources/main/static/index.html	/^            <div id="bookingContainer"><\/div> $/;"	I
 bookingContainer	src/main/resources/static/booking.html	/^            <div id="bookingContainer"><\/div> $/;"	I
 bookingContainer	src/main/resources/static/index.html	/^            <div id="bookingContainer"><\/div> $/;"	I
-cInfo	build/resources/main/static/booking.js	/^                    let cInfo =  {$/;"	v	function:anonymousFunction1394fbcd2200
+cInfo	build/resources/main/static/booking.js	/^                    let cInfo =  {$/;"	v	function:anonymousFunction1394fbcd2000
 cInfo	src/main/resources/static/booking.js	/^                    let cInfo =  {$/;"	v	function:anonymousFunction5d2eede52000
-calState	build/resources/main/static/booking.js	/^            calState: {$/;"	p	variable:anonymousObject1394fbcd2505
+calState	build/resources/main/static/booking.js	/^            calState: {$/;"	p	variable:anonymousObject1394fbcd2805
 calState	src/main/resources/static/booking.js	/^            calState: {$/;"	p	variable:anonymousObject5d2eede52805
+checkStatus	build/resources/main/static/booking.js	/^    function checkStatus(response) {$/;"	f	function:anonymousFunction1394fbcd0100
 checkStatus	src/main/resources/static/booking.js	/^    function checkStatus(response) {$/;"	f	function:anonymousFunction5d2eede50100
 closingTime	build/resources/main/static/booking.js	/^        closingTime: {$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
 closingTime	src/main/resources/static/booking.js	/^        closingTime: {$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA
@@ -289,6 +308,7 @@ com.asdarr.bricc	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^package com.a
 com.asdarr.bricc	src/test/kotlin/com/asdarr/bricc/BriccApplicationTests.kt	/^package com.asdarr.bricc$/;"	p
 config	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    private val config: BriccConfig,$/;"	C	class:com.asdarr.bricc.RestController
 config	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^    private val config: BriccConfig$/;"	C	class:com.asdarr.bricc.TimeService
+contactInfo	build/resources/main/static/index.html	/^                <div id="contactInfo">$/;"	I
 contactInfo	src/main/resources/static/index.html	/^                <div id="contactInfo">$/;"	I
 contactInfoIsValid	build/resources/main/static/booking.js	/^    function contactInfoIsValid(info) {$/;"	f	function:anonymousFunction1394fbcd0100
 contactInfoIsValid	src/main/resources/static/booking.js	/^    function contactInfoIsValid(info) {$/;"	f	function:anonymousFunction5d2eede50100
@@ -307,21 +327,20 @@ createContactForm	build/resources/main/static/booking.js	/^    function createCo
 createContactForm	src/main/resources/static/booking.js	/^    function createContactForm() {$/;"	f	function:anonymousFunction5d2eede50100
 createElem	build/resources/main/static/booking.js	/^    function createElem(tag, identifier) {$/;"	f	function:anonymousFunction1394fbcd0100
 createElem	src/main/resources/static/booking.js	/^    function createElem(tag, identifier) {$/;"	f	function:anonymousFunction5d2eede50100
-createLanePicker	build/resources/main/static/booking.js	/^    function createLanePicker() {$/;"	f	function:anonymousFunction1394fbcd0100
-createNumHoursPicker	build/resources/main/static/booking.js	/^    function createNumHoursPicker() {$/;"	f	function:anonymousFunction1394fbcd0100
+createNumPicker	build/resources/main/static/booking.js	/^    function createNumPicker(input) {$/;"	f	function:anonymousFunction1394fbcd0100
 createNumPicker	src/main/resources/static/booking.js	/^    function createNumPicker(input) {$/;"	f	function:anonymousFunction5d2eede50100
 createTile	build/resources/main/static/booking.js	/^    function createTile(slot, isSelected) {$/;"	f	function:anonymousFunction1394fbcd0100
 createTile	src/main/resources/static/booking.js	/^    function createTile(slot, isSelected) {$/;"	f	function:anonymousFunction5d2eede50100
 createTimePicker	build/resources/main/static/booking.js	/^    function createTimePicker() {$/;"	f	function:anonymousFunction1394fbcd0100
 createTimePicker	src/main/resources/static/booking.js	/^    function createTimePicker() {$/;"	f	function:anonymousFunction5d2eede50100
 cur	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        var cur = start$/;"	v	method:com.asdarr.bricc.TimeService.getAvailableStartTimes
-curMonth	build/resources/main/static/booking.js	/^                curMonth: todaysDate.getMonth(),$/;"	p	property:anonymousObject1394fbcd2505.calState
+curMonth	build/resources/main/static/booking.js	/^                curMonth: todaysDate.getMonth(),$/;"	p	property:anonymousObject1394fbcd2805.calState
 curMonth	src/main/resources/static/booking.js	/^                curMonth: todaysDate.getMonth(),$/;"	p	property:anonymousObject5d2eede52805.calState
-curYear	build/resources/main/static/booking.js	/^                curYear: todaysDate.getFullYear()$/;"	p	property:anonymousObject1394fbcd2505.calState
+curYear	build/resources/main/static/booking.js	/^                curYear: todaysDate.getFullYear()$/;"	p	property:anonymousObject1394fbcd2805.calState
 curYear	src/main/resources/static/booking.js	/^                curYear: todaysDate.getFullYear()$/;"	p	property:anonymousObject5d2eede52805.calState
 customerId	src/main/kotlin/com/asdarr/bricc/ReservationRepository.kt	/^    val customerId: Long$/;"	C	class:com.asdarr.bricc.Reservation
-date	build/resources/main/static/booking.js	/^                        date: booker.calState.selectedDate$/;"	p	variable:anonymousFunction1394fbcd2000.submittedDate
-date	build/resources/main/static/booking.js	/^                        date: submittedDate,$/;"	p	variable:anonymousFunction1394fbcd2000.submitData
+date	build/resources/main/static/booking.js	/^                        date: booker.calState.selectedDate$/;"	p	variable:anonymousFunction1394fbcd1e00.submittedDate
+date	build/resources/main/static/booking.js	/^                        date: submittedDate,$/;"	p	variable:anonymousFunction1394fbcd1e00.submitData
 date	build/resources/main/static/booking.js	/^            date: '2022-7-16',$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0205
 date	build/resources/main/static/booking.js	/^            date: '2022-7-16',$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0305
 date	build/resources/main/static/booking.js	/^            date: '2022-7-16',$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0405
@@ -350,13 +369,17 @@ date	src/main/resources/static/booking.js	/^            date: '2022-7-16',$/;"	p
 date	src/main/resources/static/booking.js	/^            date: '2022-7-16',$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50b05
 defaultBookingLength	build/resources/main/static/booking.js	/^        defaultBookingLength: 1,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
 defaultBookingLength	src/main/resources/static/booking.js	/^        defaultBookingLength: 1,$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA
+defaultNumHours	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val defaultNumHours: Int$/;"	C	class:com.asdarr.bricc.BriccConfig
+defaultNumLanes	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val defaultNumLanes: Int,$/;"	C	class:com.asdarr.bricc.BriccConfig
 die	gradlew	/^die () {$/;"	f
+displayId	build/resources/main/static/booking.js	/^                displayId: 'laneNumDisplay',$/;"	p	variable:anonymousObject1394fbcd1b05
+displayId	build/resources/main/static/booking.js	/^                displayId: 'numHoursDisplay',$/;"	p	variable:anonymousObject1394fbcd1c05
 displayId	src/main/resources/static/booking.js	/^                displayId: 'laneNumDisplay',$/;"	p	variable:anonymousObject5d2eede51b05
 displayId	src/main/resources/static/booking.js	/^                displayId: 'numHoursDisplay',$/;"	p	variable:anonymousObject5d2eede51c05
 distributionBase	gradle/wrapper/gradle-wrapper.properties	/^distributionBase=GRADLE_USER_HOME$/;"	k
 distributionPath	gradle/wrapper/gradle-wrapper.properties	/^distributionPath=wrapper\/dists$/;"	k
 distributionUrl	gradle/wrapper/gradle-wrapper.properties	/^distributionUrl=https\\:\/\/services.gradle.org\/distributions\/gradle-7.5-bin.zip$/;"	k
-email	build/resources/main/static/booking.js	/^                        email: $('emailInput').value,$/;"	p	variable:anonymousFunction1394fbcd2200.cInfo
+email	build/resources/main/static/booking.js	/^                        email: $('emailInput').value,$/;"	p	variable:anonymousFunction1394fbcd2000.cInfo
 email	src/main/resources/static/booking.js	/^                        email: $('emailInput').value,$/;"	p	variable:anonymousFunction5d2eede52000.cInfo
 end	gradlew.bat	/^:end$/;"	l
 execute	gradlew.bat	/^:execute$/;"	l
@@ -370,10 +393,13 @@ getAvailableStartTimes	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^    fun
 getCalendarTiles	build/resources/main/static/booking.js	/^    function getCalendarTiles() {$/;"	f	function:anonymousFunction1394fbcd0100
 getCalendarTiles	src/main/resources/static/booking.js	/^    function getCalendarTiles() {$/;"	f	function:anonymousFunction5d2eede50100
 gradle.version	.gradle/buildOutputCleanup/cache.properties	/^gradle.version=7.5$/;"	k
-h1	build/resources/main/static/common.css	/^h1 {$/;"	s
+handleError	build/resources/main/static/booking.js	/^            handleError: console.log$/;"	p	variable:anonymousFunction1394fbcd2900.anonymousObject1394fbcd2a05
 handleError	src/main/resources/static/booking.js	/^            handleError: console.log$/;"	p	variable:anonymousFunction5d2eede52900.anonymousObject5d2eede52a05
+handleInitResponse	build/resources/main/static/booking.js	/^    function handleInitResponse(responseText) {$/;"	f	function:anonymousFunction1394fbcd0100
 handleInitResponse	src/main/resources/static/booking.js	/^    function handleInitResponse(responseText) {$/;"	f	function:anonymousFunction5d2eede50100
+handleResponse	build/resources/main/static/booking.js	/^            handleResponse: handleInitResponse,$/;"	p	variable:anonymousFunction1394fbcd2900.anonymousObject1394fbcd2a05
 handleResponse	src/main/resources/static/booking.js	/^            handleResponse: handleInitResponse,$/;"	p	variable:anonymousFunction5d2eede52900.anonymousObject5d2eede52a05
+headerWrapper	build/resources/main/static/index.html	/^                <div id="headerWrapper">$/;"	I
 headerWrapper	src/main/resources/static/index.html	/^                <div id="headerWrapper">$/;"	I
 hours	build/resources/main/static/booking.js	/^                hours: 10,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.anonymousObject1394fbcd0f05
 hours	build/resources/main/static/booking.js	/^                hours: 12,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA.anonymousObject1394fbcd1005
@@ -448,12 +474,14 @@ initialInfo	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    fun initial
 isAvailable	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^    val isAvailable: Boolean$/;"	C	class:com.asdarr.bricc.TimeWithAvailability
 isValidTime	build/resources/main/static/booking.js	/^    function isValidTime(time) {$/;"	f	function:anonymousFunction1394fbcd0100
 isValidTime	src/main/resources/static/booking.js	/^    function isValidTime(time) {$/;"	f	function:anonymousFunction5d2eede50100
+labelText	build/resources/main/static/booking.js	/^                labelText: 'Hours: ',$/;"	p	variable:anonymousObject1394fbcd1c05
+labelText	build/resources/main/static/booking.js	/^                labelText: 'Lanes : ',$/;"	p	variable:anonymousObject1394fbcd1b05
 labelText	src/main/resources/static/booking.js	/^                labelText: 'Hours: ',$/;"	p	variable:anonymousObject5d2eede51c05
 labelText	src/main/resources/static/booking.js	/^                labelText: 'Lanes : ',$/;"	p	variable:anonymousObject5d2eede51b05
-lane	build/resources/main/static/booking.js	/^                        lane: booker.laneState.num$/;"	p	variable:anonymousFunction1394fbcd2000.submitData
+lane	build/resources/main/static/booking.js	/^                        lane: booker.laneState.num$/;"	p	variable:anonymousFunction1394fbcd1e00.submitData
 lane	src/main/kotlin/com/asdarr/bricc/ReservationRepository.kt	/^    val lane: Int,$/;"	C	class:com.asdarr.bricc.Reservation
 lane	src/main/resources/static/booking.js	/^                        lane: booker.laneState.num$/;"	p	variable:anonymousFunction5d2eede51e00.submitData
-laneState	build/resources/main/static/booking.js	/^            laneState: {$/;"	p	variable:anonymousObject1394fbcd2505
+laneState	build/resources/main/static/booking.js	/^            laneState: {$/;"	p	variable:anonymousObject1394fbcd2805
 laneState	src/main/resources/static/booking.js	/^            laneState: {$/;"	p	variable:anonymousObject5d2eede52805
 lanes	build/resources/main/static/booking.js	/^            lanes: [1],$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0205
 lanes	build/resources/main/static/booking.js	/^            lanes: [1],$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0705
@@ -479,10 +507,15 @@ links	build/resources/main/static/common.js	/^        links: [$/;"	p	variable:an
 links	src/main/resources/static/common.js	/^        links: [$/;"	p	variable:anonymousFunction4f0bf8450100.navBarInput
 main	src/main/kotlin/com/asdarr/bricc/BriccApplication.kt	/^fun main(args: Array<String>) {$/;"	m	package:com.asdarr.bricc
 mainEnd	gradlew.bat	/^:mainEnd$/;"	l
+max	build/resources/main/static/booking.js	/^                max: response.maxNumLanes$/;"	p	property:anonymousObject1394fbcd2805.laneState
 max	src/main/resources/static/booking.js	/^                max: response.maxNumLanes$/;"	p	property:anonymousObject5d2eede52805.laneState
 maxBookingLength	build/resources/main/static/booking.js	/^        maxBookingLength: 5,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
 maxBookingLength	src/main/resources/static/booking.js	/^        maxBookingLength: 5,$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA
+maxHours	build/resources/main/static/booking.js	/^                maxHours: response.maxNumHours$/;"	p	property:anonymousObject1394fbcd2805.timeState
 maxHours	src/main/resources/static/booking.js	/^                maxHours: response.maxNumHours$/;"	p	property:anonymousObject5d2eede52805.timeState
+maxNumHours	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val maxNumHours: Int,$/;"	C	class:com.asdarr.bricc.BriccConfig
+maxNumLanes	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val maxNumLanes: Int,$/;"	C	class:com.asdarr.bricc.BriccConfig
+method	build/resources/main/static/booking.js	/^        fetch(input.url.href, {method: "POST", body: input.data})$/;"	p	variable:anonymousFunction1394fbcd0100.ajaxPost.anonymousObject1394fbcd2505
 method	src/main/resources/static/booking.js	/^        fetch(input.url.href, {method: "POST", body: input.data})$/;"	p	variable:anonymousFunction5d2eede50100.ajaxPost.anonymousObject5d2eede52505
 minStartTimeInterval	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val minStartTimeInterval: Int,$/;"	C	class:com.asdarr.bricc.BriccConfig
 minTimeInterval	build/resources/main/static/booking.js	/^        minTimeInterval: 30,$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
@@ -535,19 +568,20 @@ minutes	src/main/resources/static/booking.js	/^                minutes: 30$/;"	p
 minutes	src/main/resources/static/booking.js	/^                minutes: 30$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.anonymousObject5d2eede51505
 minutes	src/main/resources/static/booking.js	/^            minutes: 30$/;"	p	property:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.closingTime
 minutes	src/main/resources/static/booking.js	/^            minutes: 30$/;"	p	property:anonymousFunction5d2eede50100.DUMMY_TIME_DATA.openingTime
+mode	build/resources/main/static/booking.js	/^        fetch(input.url.href, {mode: 'no-cors'})$/;"	p	variable:anonymousFunction1394fbcd0100.ajaxGet.anonymousObject1394fbcd2205
 mode	src/main/resources/static/booking.js	/^        fetch(input.url.href, {mode: 'no-cors'})$/;"	p	variable:anonymousFunction5d2eede50100.ajaxGet.anonymousObject5d2eede52205
-month	build/resources/main/static/booking.js	/^                        month: booker.calState.selectedMonth,$/;"	p	variable:anonymousFunction1394fbcd2000.submittedDate
+month	build/resources/main/static/booking.js	/^                        month: booker.calState.selectedMonth,$/;"	p	variable:anonymousFunction1394fbcd1e00.submittedDate
 month	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val month: String,$/;"	C	class:com.asdarr.bricc.Date
 month	src/main/resources/static/booking.js	/^                        month: booker.calState.selectedMonth,$/;"	p	variable:anonymousFunction5d2eede51e00.submittedDate
-name	build/resources/main/static/booking.js	/^                        name: $('nameInput').value$/;"	p	variable:anonymousFunction1394fbcd2200.cInfo
+name	build/resources/main/static/booking.js	/^                        name: $('nameInput').value$/;"	p	variable:anonymousFunction1394fbcd2000.cInfo
 name	src/main/resources/static/booking.js	/^                        name: $('nameInput').value$/;"	p	variable:anonymousFunction5d2eede52000.cInfo
-navBar	build/resources/main/static/booking.html	/^            <div id="navBar"><\/div>$/;"	I
-navBar	build/resources/main/static/index.html	/^            <div id="navBar">$/;"	I
+navBar	build/resources/main/static/booking.html	/^                <div id="navBar">$/;"	I
 navBar	src/main/resources/static/booking.html	/^                <div id="navBar">$/;"	I
 navBarInput	build/resources/main/static/common.js	/^    const navBarInput = {$/;"	v	function:anonymousFunctiond873e92d0100
 navBarInput	src/main/resources/static/common.js	/^    const navBarInput = {$/;"	v	function:anonymousFunction4f0bf8450100
-num	build/resources/main/static/booking.js	/^                num: DEFAULT_NUM_LANES$/;"	p	property:anonymousObject1394fbcd2505.laneState
+num	build/resources/main/static/booking.js	/^                num: response.defaultNumLanes,$/;"	p	property:anonymousObject1394fbcd2805.laneState
 num	src/main/resources/static/booking.js	/^                num: response.defaultNumLanes,$/;"	p	property:anonymousObject5d2eede52805.laneState
+numHours	build/resources/main/static/booking.js	/^                numHours: response.defaultNumHours,$/;"	p	property:anonymousObject1394fbcd2805.timeState
 numHours	build/resources/main/static/booking.js	/^            numHours: 1$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0205
 numHours	build/resources/main/static/booking.js	/^            numHours: 1$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0305
 numHours	build/resources/main/static/booking.js	/^            numHours: 1$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0405
@@ -576,15 +610,18 @@ numHours	src/main/resources/static/booking.js	/^            numHours: 1$/;"	p	va
 numHours	src/main/resources/static/booking.js	/^            numHours: 1$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50a05
 numHours	src/main/resources/static/booking.js	/^            numHours: 1$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50b05
 numHours	src/main/resources/static/booking.js	/^            numHours: response.defaultBookingLength \/\/ TODO this could persist$/;"	p	property:booker.timeState
-numLanes	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val numLanes: Int,$/;"	C	class:com.asdarr.bricc.BriccConfig
 numLanes	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    val numLanes: Int,$/;"	C	class:com.asdarr.bricc.TimesPostBody
 omega	gradlew.bat	/^:omega$/;"	l
 onCalDayClick	build/resources/main/static/booking.js	/^    function onCalDayClick() {$/;"	f	function:anonymousFunction1394fbcd0100
 onCalDayClick	src/main/resources/static/booking.js	/^    function onCalDayClick() {$/;"	f	function:anonymousFunction5d2eede50100
+onNext	build/resources/main/static/booking.js	/^                onNext: function() {$/;"	m	variable:anonymousObject1394fbcd1b05
+onNext	build/resources/main/static/booking.js	/^                onNext: function() {$/;"	m	variable:anonymousObject1394fbcd1c05
 onNext	src/main/resources/static/booking.js	/^                onNext: function() {$/;"	m	variable:anonymousObject5d2eede51b05
 onNext	src/main/resources/static/booking.js	/^                onNext: function() {$/;"	m	variable:anonymousObject5d2eede51c05
 onNextCalMonthClick	build/resources/main/static/booking.js	/^    function onNextCalMonthClick() {$/;"	f	function:anonymousFunction1394fbcd0100
 onNextCalMonthClick	src/main/resources/static/booking.js	/^    function onNextCalMonthClick() {$/;"	f	function:anonymousFunction5d2eede50100
+onPrev	build/resources/main/static/booking.js	/^                onPrev: function() {$/;"	m	variable:anonymousObject1394fbcd1b05
+onPrev	build/resources/main/static/booking.js	/^                onPrev: function() {$/;"	m	variable:anonymousObject1394fbcd1c05
 onPrev	src/main/resources/static/booking.js	/^                onPrev: function() {$/;"	m	variable:anonymousObject5d2eede51b05
 onPrev	src/main/resources/static/booking.js	/^                onPrev: function() {$/;"	m	variable:anonymousObject5d2eede51c05
 onPrevCalMonthClick	build/resources/main/static/booking.js	/^    function onPrevCalMonthClick() {$/;"	f	function:anonymousFunction1394fbcd0100
@@ -595,7 +632,7 @@ onTimeSelected	build/resources/main/static/booking.js	/^    function onTimeSelec
 onTimeSelected	src/main/resources/static/booking.js	/^    function onTimeSelected() {$/;"	f	function:anonymousFunction5d2eede50100
 openingTime	build/resources/main/static/booking.js	/^        openingTime: {$/;"	p	variable:anonymousFunction1394fbcd0100.DUMMY_TIME_DATA
 openingTime	src/main/resources/static/booking.js	/^        openingTime: {$/;"	p	variable:anonymousFunction5d2eede50100.DUMMY_TIME_DATA
-overallState	build/resources/main/static/booking.js	/^            overallState: State.DATE_LANE_SCREEN$/;"	p	variable:anonymousObject1394fbcd2505
+overallState	build/resources/main/static/booking.js	/^            overallState: State.DATE_LANE_SCREEN$/;"	p	variable:anonymousObject1394fbcd2805
 overallState	src/main/resources/static/booking.js	/^            overallState: State.DATE_LANE_SCREEN$/;"	p	variable:anonymousObject5d2eede52805
 removeIfSelected	build/resources/main/static/booking.js	/^    function removeIfSelected(s1) {$/;"	f	function:anonymousFunction1394fbcd0100
 removeIfSelected	src/main/resources/static/booking.js	/^    function removeIfSelected(s1) {$/;"	f	function:anonymousFunction5d2eede50100
@@ -615,13 +652,13 @@ ret	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        val ret: MutableLi
 s	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        config.specialTimings.forEach { s ->$/;"	m	method:com.asdarr.bricc.TimeService.getAvailableStartTimes.<lambda>
 selected	build/resources/main/static/booking.js	/^                selected: new Set()$/;"	p	property:booker.bookState
 selected	src/main/resources/static/booking.js	/^                selected: new Set()$/;"	p	property:booker.bookState
-selectedDate	build/resources/main/static/booking.js	/^                selectedDate: todaysDate.getDate(),$/;"	p	property:anonymousObject1394fbcd2505.calState
+selectedDate	build/resources/main/static/booking.js	/^                selectedDate: todaysDate.getDate(),$/;"	p	property:anonymousObject1394fbcd2805.calState
 selectedDate	src/main/resources/static/booking.js	/^                selectedDate: todaysDate.getDate(),$/;"	p	property:anonymousObject5d2eede52805.calState
-selectedMonth	build/resources/main/static/booking.js	/^                selectedMonth: todaysDate.getMonth(),$/;"	p	property:anonymousObject1394fbcd2505.calState
+selectedMonth	build/resources/main/static/booking.js	/^                selectedMonth: todaysDate.getMonth(),$/;"	p	property:anonymousObject1394fbcd2805.calState
 selectedMonth	src/main/resources/static/booking.js	/^                selectedMonth: todaysDate.getMonth(),$/;"	p	property:anonymousObject5d2eede52805.calState
 selectedTime	build/resources/main/static/booking.js	/^            selectedTime: { ...response.bookableTimes[0] },$/;"	p	property:booker.timeState
 selectedTime	src/main/resources/static/booking.js	/^            selectedTime: { ...response.bookableTimes[0] },$/;"	p	property:booker.timeState
-selectedYear	build/resources/main/static/booking.js	/^                selectedYear: todaysDate.getFullYear(),$/;"	p	property:anonymousObject1394fbcd2505.calState
+selectedYear	build/resources/main/static/booking.js	/^                selectedYear: todaysDate.getFullYear(),$/;"	p	property:anonymousObject1394fbcd2805.calState
 selectedYear	src/main/resources/static/booking.js	/^                selectedYear: todaysDate.getFullYear(),$/;"	p	property:anonymousObject5d2eede52805.calState
 setState	build/resources/main/static/booking.js	/^        this.setState = function(state) {$/;"	m	class:anonymousFunction1394fbcd0100.Booker
 setState	src/main/resources/static/booking.js	/^        this.setState = function(state) {$/;"	m	class:anonymousFunction5d2eede50100.Booker
@@ -631,7 +668,7 @@ slotKeyGen	build/resources/main/static/booking.js	/^    function slotKeyGen(s) {
 slotKeyGen	src/main/resources/static/booking.js	/^    function slotKeyGen(s) {$/;"	f	function:anonymousFunction5d2eede50100
 slots	build/resources/main/static/booking.js	/^                slots: response,$/;"	p	property:booker.bookState
 slots	src/main/resources/static/booking.js	/^                slots: response,$/;"	p	property:booker.bookState
-specialTimings	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val specialTimings: List<SpecialTime>$/;"	C	class:com.asdarr.bricc.BriccConfig
+specialTimings	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val specialTimings: List<SpecialTime>,$/;"	C	class:com.asdarr.bricc.BriccConfig
 start	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        var start = timeToMinutes(config.startTime)$/;"	v	method:com.asdarr.bricc.TimeService.getAvailableStartTimes
 startTime	build/resources/main/static/booking.js	/^            startTime: {$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0205
 startTime	build/resources/main/static/booking.js	/^            startTime: {$/;"	p	variable:anonymousFunction1394fbcd0100.anonymousObject1394fbcd0305
@@ -657,9 +694,9 @@ startTime	src/main/resources/static/booking.js	/^            startTime: {$/;"	p	
 startTime	src/main/resources/static/booking.js	/^            startTime: {$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50a05
 startTime	src/main/resources/static/booking.js	/^            startTime: {$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50b05
 subject	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val subject: String,$/;"	C	class:com.asdarr.bricc.Announcement
-submitData	build/resources/main/static/booking.js	/^                    let submitData = {$/;"	v	function:anonymousFunction1394fbcd2000
+submitData	build/resources/main/static/booking.js	/^                    let submitData = {$/;"	v	function:anonymousFunction1394fbcd1e00
 submitData	src/main/resources/static/booking.js	/^                    let submitData = {$/;"	v	function:anonymousFunction5d2eede51e00
-submittedDate	build/resources/main/static/booking.js	/^                    let submittedDate = {$/;"	v	function:anonymousFunction1394fbcd2000
+submittedDate	build/resources/main/static/booking.js	/^                    let submittedDate = {$/;"	v	function:anonymousFunction1394fbcd1e00
 submittedDate	src/main/resources/static/booking.js	/^                    let submittedDate = {$/;"	v	function:anonymousFunction5d2eede51e00
 text	build/resources/main/static/common.js	/^                text: 'Home',$/;"	p	variable:anonymousFunctiond873e92d0100.navBarInput.anonymousObjectd873e92d0205
 text	build/resources/main/static/common.js	/^                text: 'Make a Booking',$/;"	p	variable:anonymousFunctiond873e92d0100.navBarInput.anonymousObjectd873e92d0305
@@ -667,7 +704,7 @@ text	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val text: String$/;"	
 text	src/main/resources/static/common.js	/^                text: 'Home',$/;"	p	variable:anonymousFunction4f0bf8450100.navBarInput.anonymousObject4f0bf8450205
 text	src/main/resources/static/common.js	/^                text: 'Make a Booking',$/;"	p	variable:anonymousFunction4f0bf8450100.navBarInput.anonymousObject4f0bf8450305
 timeService	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^    private val timeService: TimeService$/;"	C	class:com.asdarr.bricc.RestController
-timeState	build/resources/main/static/booking.js	/^            timeState: null,$/;"	p	variable:anonymousObject1394fbcd2505
+timeState	build/resources/main/static/booking.js	/^            timeState: {$/;"	p	variable:anonymousObject1394fbcd2805
 timeState	src/main/resources/static/booking.js	/^            timeState: {$/;"	p	variable:anonymousObject5d2eede52805
 timeToMinutes	src/main/kotlin/com/asdarr/bricc/RestController.kt	/^fun timeToMinutes(time: Time): Int = (time.hours * 60) + time.minutes$/;"	m	package:com.asdarr.bricc
 todayString	src/main/kotlin/com/asdarr/bricc/TimeService.kt	/^        val todayString = input.date.let { "${it.year}-${it.month}-${it.date}" }$/;"	C	method:com.asdarr.bricc.TimeService.getAvailableStartTimes
@@ -695,9 +732,10 @@ type	src/main/resources/static/booking.js	/^            type: 'Outdoor',$/;"	p	v
 type	src/main/resources/static/booking.js	/^            type: 'Outdoor',$/;"	p	variable:anonymousFunction5d2eede50100.anonymousObject5d2eede50b05
 updateCalSelectedDateDisplay	build/resources/main/static/booking.js	/^    function updateCalSelectedDateDisplay() {$/;"	f	function:anonymousFunction1394fbcd0100
 updateCalSelectedDateDisplay	src/main/resources/static/booking.js	/^    function updateCalSelectedDateDisplay() {$/;"	f	function:anonymousFunction5d2eede50100
+url	build/resources/main/static/booking.js	/^            url: WEB_SERVER_URL,$/;"	p	variable:anonymousFunction1394fbcd2900.anonymousObject1394fbcd2a05
 url	src/main/resources/static/booking.js	/^            url: WEB_SERVER_URL,$/;"	p	variable:anonymousFunction5d2eede52900.anonymousObject5d2eede52a05
 warn	gradlew	/^warn () {$/;"	f
-year	build/resources/main/static/booking.js	/^                        year: booker.calState.selectedYear,$/;"	p	variable:anonymousFunction1394fbcd2000.submittedDate
+year	build/resources/main/static/booking.js	/^                        year: booker.calState.selectedYear,$/;"	p	variable:anonymousFunction1394fbcd1e00.submittedDate
 year	src/main/kotlin/com/asdarr/bricc/BriccConfig.kt	/^    val year: String,$/;"	C	class:com.asdarr.bricc.Date
 year	src/main/resources/static/booking.js	/^                        year: booker.calState.selectedYear,$/;"	p	variable:anonymousFunction5d2eede51e00.submittedDate
 zipStoreBase	gradle/wrapper/gradle-wrapper.properties	/^zipStoreBase=GRADLE_USER_HOME$/;"	k

@@ -35,3 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### tags ###
+tags
+tags.temp
+tags.lock
