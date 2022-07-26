@@ -9,30 +9,40 @@ body {
 }
 
 #banner {
-  position: relative;
-  background-color: #f6f6f6;
+    position: relative;
+    background-color: #f6f6f6;
 }
 
-#banner > img {
-  position: absolute;
-  left: 10px;
-  top: 10px;
+#headerWrapper {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#headerWrapper > h1 {
+    margin: 0px;
+    padding-top: 30px;
+    padding-left: 20px;
+    color: #363538;
+    font-size: 36px;
+}
+
+#headerWrapper > img {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#banner p {
+    font-size: 18px;
 }
 
 #banner > p {
   font-style: italic;
-  font-size: 18px;
+  margin-top: 0px;
 }
 
 #contactInfo {
     display: flex;
     justify-content: space-around;
-}
-
-h1 {
-    margin: 0px;
-    padding-top: 20px;
-    color: #363538;
 }
 
 #contentContainer {

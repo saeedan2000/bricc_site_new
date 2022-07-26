@@ -367,40 +367,33 @@
         $('laneNumDisplay').textContent = booker.laneState.num.toString();
     }
 
-    function createLanePicker() {
-        // Create display for currently selected number of lanes.
-        let laneNumDisplay = createElem('div', '#laneNumDisplay');
+    // Probably doesn't need it's own function, but in keeping with the pattern.
+    function renderNumHoursPicker() {
+        $('numHoursDisplay').textContent = booker.timeState.numHours.toString();
+    }
 
-        // Create button for increasing the number of lanes
-        let nextLaneButton = document.createElement('div');
-        nextLaneButton.classList.add('incDecButton');
-        nextLaneButton.textContent = '>';
-        nextLaneButton.addEventListener('click', function() {
-            if (booker.laneState.num < MAX_LANES_PER_BOOKING) {
-                booker.laneState.num++;
-                renderLanePicker()
-            }
-        });
 
-        // Create button for decreasing the number of lanes.
-        let prevLaneButton = document.createElement('div');
-        prevLaneButton.classList.add('incDecButton');
-        prevLaneButton.textContent = '<';
-        prevLaneButton.addEventListener('click', function() {
-            if (booker.laneState.num > 1) {
-                booker.laneState.num--;
-                renderLanePicker()
-            }
-        });
+    function createNumPicker(input) {
+        let numDisplay = createElem('div', '.numDisplay');
+        numDisplay.id = input.displayId;
+
+        let nextButton = document.createElement('div'); // maybe remove id for corresponding button for lane picker
+        nextButton.classList.add('incDecButton');
+        nextButton.textContent = '>';
+        nextButton.addEventListener('click', input.onNext);
+
+        let prevButton = document.createElement('div');
+        prevButton.classList.add('incDecButton');
+        prevButton.textContent = '<';
+        prevButton.addEventListener('click', input.onPrev);
 
         let label = document.createElement('p');
-        label.textContent = 'Lanes: ';
+        label.textContent = input.labelText;
 
         // Create container to hold these elements
-        let lanePickerContainer = createElem('div', '.numPickerContainer');
-        lanePickerContainer.append(label, prevLaneButton, laneNumDisplay, nextLaneButton);
-
-        return lanePickerContainer;
+        let numPickerContainer = createElem('div', '.numPickerContainer');
+        numPickerContainer.append(label, prevButton, numDisplay, nextButton);
+        return numPickerContainer;
     }
 
     function createBookerButton(text, onClick) {
@@ -511,44 +504,6 @@
         
         timePickerContainer.append(scroller);
         return timePickerContainer;
-    }
-
-    // Probably doesn't need it's own function, but in keeping with the pattern.
-    function renderNumHoursPicker() {
-        $('numHoursDisplay').textContent = booker.timeState.numHours.toString();
-    }
-
-    // closely matches lanepicker
-    function createNumHoursPicker() {
-        let numHoursDisplay = createElem('div', '#numHoursDisplay');
-
-        let nextHourButton = document.createElement('div'); // maybe remove id for corresponding button for lane picker
-        nextHourButton.classList.add('incDecButton');
-        nextHourButton.textContent = '>';
-        nextHourButton.addEventListener('click', function() {
-            if (booker.timeState.numHours < booker.timeState.initData.maxBookingLength) {
-                booker.timeState.numHours++;
-                renderNumHoursPicker()
-            }
-        });
-
-        let prevHourButton = document.createElement('div');
-        prevHourButton.classList.add('incDecButton');
-        prevHourButton.textContent = '<';
-        prevHourButton.addEventListener('click', function() {
-            if (booker.timeState.numHours > 1) {
-                booker.timeState.numHours--;
-                renderNumHoursPicker()
-            }
-        });
-
-        let label = document.createElement('p');
-        label.textContent = 'Hours: ';
-
-        // Create container to hold these elements
-        let numHoursPickerContainer = createElem('div', '.numPickerContainer');
-        numHoursPickerContainer.append(label, prevHourButton, numHoursDisplay, nextHourButton);
-        return numHoursPickerContainer;
     }
 
     function fakeTimesApiCall() {
@@ -714,14 +669,42 @@
             // render the calendar (based on the calState which should already be set
             renderCalendar();
 
-            // Add lane picker label, and lane picker
+            // Add label and lanepicker and numhours picker
             addLabel('How many lanes would you like to book and for how long?', dateLanePickerContainer);
-            dateLanePickerContainer.append(createLanePicker());
+
+            dateLanePickerContainer.append(createNumPicker({  // lanepicker
+                labelText: 'Lanes : ',
+                displayId: 'laneNumDisplay',
+                onNext: function() {
+                    if (booker.laneState.num < MAX_LANES_PER_BOOKING) {
+                        booker.laneState.num++;
+                        renderLanePicker()
+                    }
+                },
+                onPrev: function() {
+                    if (booker.laneState.num > 1) {
+                        booker.laneState.num--;
+                        renderLanePicker()
+                    }
+                }
+            }));
             renderLanePicker(); // render as above
-
-
-            // TODO remove this if not good, temp
-            dateLanePickerContainer.append(createNumHoursPicker());
+            dateLanePickerContainer.append(createNumPicker({ // num hours picker
+                labelText: 'Hours: ',
+                displayId: 'numHoursDisplay',
+                onNext: function() {
+                    if (booker.timeState.numHours < booker.timeState.initData.maxBookingLength) {
+                        booker.timeState.numHours++;
+                        renderNumHoursPicker()
+                    }
+                },
+                onPrev: function() {
+                    if (booker.timeState.numHours > 1) {
+                        booker.timeState.numHours--;
+                        renderNumHoursPicker()
+                    }
+                }
+            }));
             renderNumHoursPicker(); //render as above
 
             // Add the button to submit date and lane choices and move to the next stage of booking.

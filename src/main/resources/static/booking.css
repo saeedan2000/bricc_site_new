@@ -52,8 +52,9 @@
 }
 
 .numPickerContainer  {
+    margin-left: 30%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .numPickerContainer > div {
@@ -62,6 +63,7 @@
 }
 
 .numPickerContainer > p {
+    width: 15%;
     font-size: 22px;
     padding-right: 20px;
 }
@@ -80,7 +82,7 @@
     font-size: 24px;
 }
 
-#laneNumDisplay, #numHoursDisplay{
+.numDisplay {
     height: 50px;
     width: 50px;
     font-size: 24px;
