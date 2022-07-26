@@ -25,7 +25,10 @@ bricc:
                   minutes: 0
               numHours: 7
 
-        numLanes: 5
+        maxNumLanes: 5
+        maxNumHours: 6
+        defaultNumLanes: 1
+        defaultNumHours: 1
 
 spring:
     datasource:

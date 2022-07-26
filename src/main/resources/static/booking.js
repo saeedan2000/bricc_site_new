@@ -8,10 +8,11 @@
 // bulk bookings.
 (function() {
 
-    // as of now not planning to get this from backend, not something likely to change.
-    const MAX_LANES_PER_BOOKING = 5;
+    const WEB_SERVER_URL = new URL('http://localhost:9090');
 
-    const DEFAULT_NUM_LANES = 1;
+    const API_PATH = '/api';
+    
+    const INIT_PATH = '/init';
 
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
                 'September', 'October', 'November', 'December'];
@@ -676,7 +677,7 @@
                 labelText: 'Lanes : ',
                 displayId: 'laneNumDisplay',
                 onNext: function() {
-                    if (booker.laneState.num < MAX_LANES_PER_BOOKING) {
+                    if (booker.laneState.num < booker.laneState.max) {
                         booker.laneState.num++;
                         renderLanePicker()
                     }
@@ -693,7 +694,7 @@
                 labelText: 'Hours: ',
                 displayId: 'numHoursDisplay',
                 onNext: function() {
-                    if (booker.timeState.numHours < booker.timeState.initData.maxBookingLength) {
+                    if (booker.timeState.numHours < booker.timeState.maxHours) {
                         booker.timeState.numHours++;
                         renderNumHoursPicker()
                     }
@@ -823,7 +824,43 @@
 
     }
 
-    window.addEventListener('load', function() {
+    // fetch ajax boilerplate
+    function checkStatus(response) {
+        if (response.status >= 200 && response.status < 300) {
+            return response.text();
+        } else {
+            return Promise.reject(new Error(response.status +
+                                            ": " + response.statusText));
+        }
+    }
+    
+    // Takes a URL object, not a string
+    function ajaxGet(input) {
+        fetch(input.url.href, {mode: 'no-cors'})
+           .then(checkStatus)
+           .then(function(responseText) {
+               input.handleResponse(responseText); 
+           })
+           .catch(function(error) {
+               input.handleError(error);
+           });
+    }
+
+    // Takes a URL object, not a string
+    function ajaxPost() {
+        fetch(input.url.href, {method: "POST", body: input.data})
+           .then(checkStatus)
+           .then(function(responseText) {
+                input.handleResponse(responseText)
+           })
+           .catch(function(error) {
+               input.handleError(error);
+           });
+    }
+
+    function handleInitResponse(responseText) {
+        let response = JSON.parse(responseText);
+
         // Create the booker, set its state, then call init.
         // This allows us to potentially pull a saved state from somewhere to initialize the booker.
         let todaysDate = new Date();
@@ -837,14 +874,25 @@
                 curYear: todaysDate.getFullYear()
             },
             laneState: {
-                num: DEFAULT_NUM_LANES
+                num: response.defaultNumLanes,
+                max: response.maxNumLanes
             },
             timeState: {
-                numHours: 1 // TODO
+                numHours: response.defaultNumHours,
+                maxHours: response.maxNumHours
             },
             bookState: null,
             overallState: State.DATE_LANE_SCREEN
         });
         booker.init($('bookingContainer'));
+    }
+
+    window.addEventListener('load', function() {
+        WEB_SERVER_URL.pathname = API_PATH + INIT_PATH;
+        ajaxGet({
+            url: WEB_SERVER_URL,
+            handleResponse: handleInitResponse,
+            handleError: console.log
+        });
     });
 })();

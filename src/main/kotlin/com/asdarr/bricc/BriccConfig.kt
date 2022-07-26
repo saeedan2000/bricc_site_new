@@ -31,6 +31,9 @@ data class BriccConfig(
     val startTime: Time,
     val numHours: Int,
     val minStartTimeInterval: Int,
-    val numLanes: Int,
-    val specialTimings: List<SpecialTime>
+    val specialTimings: List<SpecialTime>,
+    val maxNumLanes: Int,
+    val maxNumHours: Int,
+    val defaultNumLanes: Int,
+    val defaultNumHours: Int
 )
