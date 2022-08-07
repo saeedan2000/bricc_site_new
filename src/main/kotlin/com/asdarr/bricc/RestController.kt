@@ -3,29 +3,28 @@ package com.asdarr.bricc
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.bind.annotation.RestController
 
-
-data class TimesPostBody(
-    val date: Date,
-    val numLanes: Int,
+data class AvailabilityPostBody(
+    val date: String,
     val numHours: Int
 )
 
 @RestController
 @RequestMapping("/api")
 class RestController(
-    private val config: BriccConfig,
-    private val timeService: TimeService
+    private val initService: InitService,
+    private val availService: AvailabilityService
     ) {
 
     @GetMapping("/init")
-    fun initialInfo(): BriccConfig {
-        return config
+    fun initInfo(): InitInfo {
+        return initService.getInitInfo()
     }
 
+    /**
+     * Given a date and a number of hours, we return all available lanes for each hour.
+     */
     @PostMapping("/availability")
-    fun availableStartTimes(@RequestBody body: TimesPostBody): List<TimeWithAvailability> {
-        return timeService.getAvailableStartTimes(body)
+    fun availability(@RequestBody body: AvailabilityPostBody): List<HourlyAvailability> {
+        return availService.getAvailablity(body.date, body.numHours)
     }
 }
-
-fun timeToMinutes(time: Time): Int = (time.hours * 60) + time.minutes

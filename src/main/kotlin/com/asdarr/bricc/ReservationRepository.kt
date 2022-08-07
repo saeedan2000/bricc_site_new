@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository
 // Column and Table annotations are used where the naming scheme doesn't match the actual database.
 // This is because I decided to use lowercase with underscores in the database to exercise the mind.
 @Table("reservations")
-data class Reservation(
+data class ReservationEntry(
     @Id
     val id: Long,
     val date: String,
@@ -24,6 +24,6 @@ data class Reservation(
     val customerId: Long
 )
 
-interface ReservationRepository : CrudRepository<Reservation, Long> {
+interface ReservationRepository : CrudRepository<ReservationEntry, Long> {
 
 }

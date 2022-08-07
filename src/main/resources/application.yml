@@ -1,33 +1,6 @@
 bricc:
     config:
-        startTime:
-            hours: 7
-            minutes: 30
-        numHours: 16
-        minStartTimeInterval: 30
-
-        specialTimings:
-            - date:
-                  year: 2022
-                  month: 7
-                  date: 26
-              startTime:
-                  hours: 9
-                  minutes: 0
-              numHours: 5
-
-            - date:
-                  year: 2022
-                  month: 7
-                  date: 29
-              startTime:
-                  hours: 10
-                  minutes: 0
-              numHours: 7
-
-        maxNumLanes: 5
         maxNumHours: 6
-        defaultNumLanes: 1
         defaultNumHours: 1
 
 spring:
